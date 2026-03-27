@@ -86,6 +86,7 @@ def build(unknown_args: List[str]):
         f"/p:Pack={tools.pack}",
         f"/p:Publish={tools.publish}",
         f"/p:ProductBuild={tools.product_build}",
+        f"/p:RestoreStaticGraphEnableBinaryLogger={tools.binary_log}",
     ]
 
     tools.msbuild([toolset, *build_args, *unknown_args])
