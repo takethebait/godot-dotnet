@@ -129,7 +129,7 @@ def locate_visual_studio(vs_requirements: dict = {}) -> Union[dict, None]:
         for component in vs_requirements["components"]:
             args += ["-requires", component]
 
-    vswhere_process = subprocess.run([vswhere_exe, *args])
+    vswhere_process = subprocess.run([vswhere_exe, *args], capture_output=True, text=True)
     if vswhere_process.returncode != 0:
         return None
 
@@ -161,8 +161,7 @@ class Version:
         self.build = build
 
     def __eq__(self, other) -> bool:
-        self.major == other.major and self.minor == other.minor and self.patch == other.patch and self.build == other.build
-        return True
+        return self.major == other.major and self.minor == other.minor and self.patch == other.patch and self.build == other.build
 
     def __ne__(self, other) -> bool:
         return not self.__eq__(other)
