@@ -1,5 +1,8 @@
+using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
@@ -70,10 +73,15 @@ internal static class CodeActionWithUpgradeMetadataExtensions
             metadata = _metadata;
         }
 
-        protected override Task<Solution?> GetChangedSolutionAsync(CancellationToken cancellationToken)
+        protected override async Task<Solution?> GetChangedSolutionAsync(CancellationToken cancellationToken)
         {
-            // This CodeAction must never be used directly, use the wrapped OriginalCodeAction.
-            throw new UnreachableException();
+            // The original code action should be used instead, but there are some cases
+            // where it may not be possible. For example, code fix tests use the wrapper
+            // directly because it's the one that gets registered by the code fix provider.
+            // We just delegate to the original code action's implementation of this method.
+            var operations = await _originalCodeAction.GetOperationsAsync(cancellationToken).ConfigureAwait(false);
+            var applyChangesOperation = operations.OfType<ApplyChangesOperation>().FirstOrDefault();
+            return applyChangesOperation?.ChangedSolution;
         }
     }
 }

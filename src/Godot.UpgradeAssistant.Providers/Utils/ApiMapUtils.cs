@@ -101,7 +101,7 @@ internal static partial class ApiMapUtils
     /// <returns>The entry found in the API map.</returns>
     public static async ValueTask<ApiMapEntry?> GetApiEntryForSymbolAsync(ISymbol symbol, SemVer targetGodotVersion, bool isGodotDotNetEnabled = false, CancellationToken cancellationToken = default)
     {
-        string fullName = symbol.FullQualifiedNameOmitGlobal();
+        string fullName = symbol.GetOriginalDefinitionFullName();
         if (!TryGetApiKindFromSymbolType(symbol, out var kind))
         {
             // Unsupported symbol type, an entry will never be found.
@@ -151,7 +151,7 @@ internal static partial class ApiMapUtils
     /// <returns>The entry found in the API map.</returns>
     public static async ValueTask<ApiMapEntry?> GetApiEntryForSymbolExactMatchAsync(ISymbol symbol, SemVer targetGodotVersion, bool isGodotDotNetEnabled = false, CancellationToken cancellationToken = default)
     {
-        string fullName = symbol.FullQualifiedNameOmitGlobal();
+        string fullName = symbol.GetOriginalDefinitionFullName();
         if (!TryGetApiKindFromSymbolType(symbol, out var kind))
         {
             // Unsupported symbol type, an entry will never be found.
@@ -243,5 +243,30 @@ internal static partial class ApiMapUtils
 
         // Only return the entry if it matches the kind; otherwise, assume it wasn't found.
         return entry.Kind == kind ? entry : null;
+    }
+
+    /// <summary>
+    /// Gets the fully-qualified name of the original definition for a generic symbol.
+    /// For example, for <c>GodotArray&lt;int&gt;</c> it will return <c>Godot.Collections.GodotArray&lt;T&gt;</c>.
+    /// This is important when comparing against the API map entries, because the entries use the original definition's
+    /// fully-qualified name as the key, and with a bound generic type we won't find the entry in the map.
+    /// </summary>
+    /// <param name="symbol">The symbol to get the original definition for.</param>
+    /// <returns>The fully-qualified name of the original definition.</returns>
+    private static string GetOriginalDefinitionFullName(this ISymbol symbol)
+    {
+        ISymbol originalDefinition = symbol switch
+        {
+            INamedTypeSymbol { IsGenericType: true, IsUnboundGenericType: false } namedType
+                => namedType.OriginalDefinition,
+
+            IMethodSymbol { IsGenericMethod: true, IsDefinition: false } method
+                => method.OriginalDefinition,
+
+            _
+                => symbol,
+        };
+
+        return originalDefinition.FullQualifiedNameOmitGlobal();
     }
 }

@@ -195,7 +195,16 @@ internal static class SyntaxUtils
                 var typeArgumentList = SyntaxFactory.TypeArgumentList(
                     SyntaxFactory.SeparatedList(typeArguments));
 
-                nameSyntax = SyntaxFactory.GenericName(typeFullName[identifierRange])
+                // Strip any generic type parameter notation from the identifier
+                // For example, "GodotArray<T>" becomes "GodotArray".
+                // The actual type arguments are already provided separately via typeArguments.
+                string identifierText = typeFullName[identifierRange];
+                int genericStart = identifierText.IndexOf('<');
+                string identifierName = genericStart != -1
+                    ? identifierText[..genericStart].ToString()
+                    : identifierText.ToString();
+
+                nameSyntax = SyntaxFactory.GenericName(identifierName)
                     .WithTypeArgumentList(typeArgumentList);
             }
             else

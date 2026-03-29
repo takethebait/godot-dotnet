@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using Godot.Common.CodeAnalysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -30,20 +31,16 @@ internal sealed class GodotArrayConcatenationAnalyzer : DiagnosticAnalyzer
         var binaryExpression = (BinaryExpressionSyntax)context.Node;
 
         var semanticModel = context.SemanticModel;
-        if (semanticModel.GetOperation(binaryExpression) is not IBinaryOperation binaryOperation)
+
+        if (!IsGodotArrayAddExpression(binaryExpression, semanticModel))
         {
-            // Unable to get the binary operation.
             return;
         }
 
-        var operatorMethod = binaryOperation.OperatorMethod;
-        if (operatorMethod is null)
-        {
-            // Not a user-defined operator.
-            return;
-        }
-
-        if (!IsGodotArrayAddOperator(operatorMethod))
+        // Only report the outermost binary expression in a chain.
+        // If the parent is also a matching GodotArray add expression, skip this one.
+        if (binaryExpression.Parent is BinaryExpressionSyntax parentExpression
+         && IsGodotArrayAddExpression(parentExpression, semanticModel))
         {
             return;
         }
@@ -51,6 +48,29 @@ internal sealed class GodotArrayConcatenationAnalyzer : DiagnosticAnalyzer
         context.ReportDiagnostic(Diagnostic.Create(
             descriptor: Rule,
             location: binaryExpression.GetLocation()));
+    }
+
+    private static bool IsGodotArrayAddExpression(BinaryExpressionSyntax binaryExpression, SemanticModel semanticModel)
+    {
+        if (!binaryExpression.IsKind(SyntaxKind.AddExpression))
+        {
+            return false;
+        }
+
+        if (semanticModel.GetOperation(binaryExpression) is not IBinaryOperation binaryOperation)
+        {
+            // Unable to get the binary operation.
+            return false;
+        }
+
+        var operatorMethod = binaryOperation.OperatorMethod;
+        if (operatorMethod is null)
+        {
+            // Not a user-defined operator.
+            return false;
+        }
+
+        return IsGodotArrayAddOperator(operatorMethod);
     }
 
     private static bool IsGodotArrayAddOperator(IMethodSymbol operatorMethod)
@@ -61,7 +81,17 @@ internal sealed class GodotArrayConcatenationAnalyzer : DiagnosticAnalyzer
         }
 
         var containingType = operatorMethod.ContainingType;
-        return containingType.EqualsType("Godot.Collections.Array", "GodotSharp")
-            || containingType.EqualsGenericType("Godot.Collections.Array<T>", "GodotSharp");
+        return IsGodotArrayType(containingType);
+    }
+
+    private static bool IsGodotArrayType([NotNullWhen(true)] ITypeSymbol? typeSymbol)
+    {
+        if (typeSymbol is null)
+        {
+            return false;
+        }
+
+        return typeSymbol.EqualsType("Godot.Collections.Array", "GodotSharp")
+            || typeSymbol.EqualsGenericType("Godot.Collections.Array<T>", "GodotSharp");
     }
 }
