@@ -23,7 +23,7 @@ partial class ApiMapCodeFix
 
         string typeName = GetMappedTypeName(syntaxNode, mapping, newNamespaces, out var fullNameSyntax);
 
-        SyntaxNode? newSyntaxNode = CreateNewSyntaxNode(syntaxNode, typeName);
+        SyntaxNode? newSyntaxNode = CreateNewSyntaxNode(syntaxNode, typeName, mapping.IsSingleton);
         if (newSyntaxNode is null)
         {
             return null;
@@ -31,7 +31,7 @@ partial class ApiMapCodeFix
 
         return root.ReplaceNode(fullNameSyntax, newSyntaxNode.WithTriviaFrom(fullNameSyntax));
 
-        static SyntaxNode? CreateNewSyntaxNode(SyntaxNode? syntaxNode, string typeFullName)
+        static SyntaxNode? CreateNewSyntaxNode(SyntaxNode? syntaxNode, string typeFullName, bool isSingleton)
         {
             while (syntaxNode is not null)
             {
@@ -41,6 +41,13 @@ partial class ApiMapCodeFix
                 }
                 if (syntaxNode is NameSyntax)
                 {
+                    if (isSingleton)
+                    {
+                        // If the type is a singleton type, we always create a member access expression,
+                        // because the type name includes the singleton property.
+                        return SyntaxUtils.CreateMemberAccessExpression(typeFullName);
+                    }
+
                     return SyntaxUtils.CreateQualifiedName(typeFullName);
                 }
                 if (syntaxNode is MemberAccessExpressionSyntax)
@@ -65,15 +72,31 @@ partial class ApiMapCodeFix
             // If we got the same syntax node, we should reference the type using the simple name (not fully-qualified).
             bool useSimpleName = fullNameSyntax == syntaxNode;
 
-            string name = useSimpleName
-                ? mapping.ValueDescriptor.Identifier
-                : mapping.ValueDescriptor.FullName;
+            string name;
+            string? @namespace;
+            if (mapping.IsSingleton)
+            {
+                // If the type is a singleton type, we need to split the descriptor a bit differently,
+                // because it contains the singleton property and we need to include it as part of the type.
+                name = useSimpleName
+                    ? SyntaxUtils.ConcatIdentifiers(mapping.ValueDescriptor.Type, mapping.ValueDescriptor.Identifier)
+                    : mapping.ValueDescriptor.FullName;
+                @namespace = mapping.ValueDescriptor.Namespace;
+            }
+            else
+            {
+                name = useSimpleName
+                    ? mapping.ValueDescriptor.Identifier
+                    : mapping.ValueDescriptor.FullName;
+                @namespace = SyntaxUtils.ConcatIdentifiers(mapping.ValueDescriptor.Namespace, mapping.ValueDescriptor.Type);
+            }
+
             Debug.Assert(!string.IsNullOrEmpty(name));
 
             if (useSimpleName)
             {
                 // We're using the simple name, so we need to ensure the namespace is imported.
-                AddNamespaceIfNotNullOrEmpty(SyntaxUtils.ConcatIdentifiers(mapping.ValueDescriptor.Namespace, mapping.ValueDescriptor.Type));
+                AddNamespaceIfNotNullOrEmpty(@namespace);
             }
             else
             {

@@ -251,7 +251,27 @@ internal static class SyntaxUtils
         var splitByAccessOperator = memberFullName.AsSpan().Split('.');
         foreach (var identifierRange in splitByAccessOperator)
         {
-            var identifierSyntax = SyntaxFactory.IdentifierName(memberFullName[identifierRange]);
+            var identifierSpan = memberFullName.AsSpan(identifierRange);
+            if (identifierSpan.StartsWith("global::", StringComparison.Ordinal))
+            {
+                identifierSpan = identifierSpan["global::".Length..];
+
+                AliasQualifiedNameSyntax aliasQualifiedNameSyntax = SyntaxFactory.AliasQualifiedName(
+                    SyntaxFactory.IdentifierName(SyntaxFactory.Token(SyntaxKind.GlobalKeyword)),
+                    SyntaxFactory.IdentifierName(identifierSpan.ToString()));
+
+                if (newSyntaxNode is null)
+                {
+                    newSyntaxNode = aliasQualifiedNameSyntax;
+                    continue;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Alias qualified name syntax can only be used at the beginning of a member access expression.");
+                }
+            }
+
+            IdentifierNameSyntax identifierSyntax = SyntaxFactory.IdentifierName(memberFullName[identifierRange]);
             if (newSyntaxNode is null)
             {
                 newSyntaxNode = identifierSyntax;

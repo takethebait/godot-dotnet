@@ -102,8 +102,20 @@ partial class ApiMapCodeFix
                 // since we can't guarantee that the new member will be accessible from the current scope.
                 if (SyntaxUtils.IsSimpleMemberAccessExpression(syntaxNode))
                 {
-                    typeFullName = mapping.ValueDescriptor.Type;
-                    AddNamespaceIfNotNullOrEmpty(mapping.ValueDescriptor.Namespace);
+                    if (mapping.IsSingleton)
+                    {
+                        // If the replaced member belongs to a singleton type, we need to
+                        // recreate the descriptor so it's split properly with the singleton property.
+                        string singletonFullName = SyntaxUtils.ConcatIdentifiers(mapping.ValueDescriptor.Namespace, mapping.ValueDescriptor.Type);
+                        var singletonDescriptor = ApiDescriptor.CreateFromFullName(singletonFullName, ApiMapKind.Type);
+                        typeFullName = SyntaxUtils.ConcatIdentifiers(singletonDescriptor.Type, singletonDescriptor.Identifier);
+                        AddNamespaceIfNotNullOrEmpty(singletonDescriptor.Namespace);
+                    }
+                    else
+                    {
+                        typeFullName = mapping.ValueDescriptor.Type;
+                        AddNamespaceIfNotNullOrEmpty(mapping.ValueDescriptor.Namespace);
+                    }
                 }
                 else
                 {

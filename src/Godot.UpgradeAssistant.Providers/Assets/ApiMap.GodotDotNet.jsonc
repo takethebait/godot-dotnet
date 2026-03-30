@@ -164,6 +164,12 @@
     "kind": "type",
     "state": "Removed",
   },
+  "Godot.AudioServer": {
+    "value": "Godot.AudioServer.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.AudioServer.BusRenamedEventHandler": {
     "kind": "type",
     "state": "Removed",
@@ -204,6 +210,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.CameraServer": {
+    "value": "Godot.CameraServer.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.CameraServer.CameraFeedAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
@@ -228,6 +240,12 @@
     "kind": "type",
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+  },
+  "Godot.ClassDB": {
+    "value": "Godot.ClassDB.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.ClassDBInstance": {
     "value": "Godot.ClassDB",
@@ -332,6 +350,12 @@
   "Godot.CustomGCHandle": {
     "kind": "type",
     "state": "Removed",
+  },
+  "Godot.DisplayServer": {
+    "value": "Godot.DisplayServer.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.DisplayServerInstance": {
     "value": "Godot.DisplayServer",
@@ -523,6 +547,18 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.Engine": {
+    "value": "Godot.Engine.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
+  "Godot.EngineDebugger": {
+    "value": "Godot.EngineDebugger.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.EngineDebuggerInstance": {
     "value": "Godot.EngineDebugger",
     "kind": "type",
@@ -618,6 +654,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.GDExtensionManager": {
+    "value": "Godot.GDExtensionManager.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.GDExtensionManager.ExtensionLoadedEventHandler": {
     "kind": "type",
     "state": "Removed",
@@ -643,10 +685,22 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.Geometry2D": {
+    "value": "Godot.Geometry2D.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.Geometry2DInstance": {
     "value": "Godot.Geometry2D",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.Geometry3D": {
+    "value": "Godot.Geometry3D.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.Geometry3DInstance": {
     "value": "Godot.Geometry3D",
@@ -781,6 +835,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_RemovedInternals",
   },
+  "Godot.Input": {
+    "value": "Godot.Input.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.Input.JoyConnectionChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
@@ -796,10 +856,22 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.InputMap": {
+    "value": "Godot.InputMap.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.InputMapInstance": {
     "value": "Godot.InputMap",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.IP": {
+    "value": "Godot.IP.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.IPInstance": {
     "value": "Godot.IP",
@@ -831,10 +903,22 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.JavaClassWrapper": {
+    "value": "Godot.JavaClassWrapper.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.JavaClassWrapperInstance": {
     "value": "Godot.JavaClassWrapper",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.JavaScriptBridge": {
+    "value": "Godot.JavaScriptBridge.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.JavaScriptBridgeInstance": {
     "value": "Godot.JavaScriptBridge",
@@ -865,6 +949,12 @@
     "kind": "type",
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+  },
+  "Godot.Marshalls": {
+    "value": "Godot.Marshalls.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.MarshallsInstance": {
     "value": "Godot.Marshalls",
@@ -1061,6 +1151,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_RemovedInternals",
   },
+  "Godot.NativeMenu": {
+    "value": "Godot.NativeMenu.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.NativeMenuInstance": {
     "value": "Godot.NativeMenu",
     "kind": "type",
@@ -1096,6 +1192,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.NavigationMeshGenerator": {
+    "value": "Godot.NavigationMeshGenerator.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.NavigationMeshGeneratorInstance": {
     "value": "Godot.NavigationMeshGenerator",
     "kind": "type",
@@ -1111,6 +1213,12 @@
     "kind": "type",
     "state": "Replaced",
   },
+  "Godot.NavigationServer2D": {
+    "value": "Godot.NavigationServer2D.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.NavigationServer2D.MapChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
@@ -1125,6 +1233,12 @@
     "kind": "type",
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+  },
+  "Godot.NavigationServer3D": {
+    "value": "Godot.NavigationServer3D.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.NavigationServer3D.MapChangedEventHandler": {
     "kind": "type",
@@ -1226,30 +1340,66 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.OS": {
+    "value": "Godot.OS.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.OSInstance": {
     "value": "Godot.OS",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.Performance": {
+    "value": "Godot.Performance.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.PerformanceInstance": {
     "value": "Godot.Performance",
     "kind": "type",
     "state": "Replaced",
   },
+  "Godot.PhysicsServer2D": {
+    "value": "Godot.PhysicsServer2D.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.PhysicsServer2DInstance": {
     "value": "Godot.PhysicsServer2D",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.PhysicsServer2DManager": {
+    "value": "Godot.PhysicsServer2DManager.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.PhysicsServer2DManagerInstance": {
     "value": "Godot.PhysicsServer2DManager",
     "kind": "type",
     "state": "Replaced",
   },
+  "Godot.PhysicsServer3D": {
+    "value": "Godot.PhysicsServer3D.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.PhysicsServer3DInstance": {
     "value": "Godot.PhysicsServer3D",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.PhysicsServer3DManager": {
+    "value": "Godot.PhysicsServer3DManager.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.PhysicsServer3DManagerInstance": {
     "value": "Godot.PhysicsServer3DManager",
@@ -1271,6 +1421,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.ProjectSettings": {
+    "value": "Godot.ProjectSettings.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.ProjectSettingsInstance": {
     "value": "Godot.ProjectSettings",
     "kind": "type",
@@ -1280,6 +1436,12 @@
     "kind": "type",
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+  },
+  "Godot.RenderingServer": {
+    "value": "Godot.RenderingServer.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.RenderingServer.EnvironmentSdfgiyScale": {
     "value": "Godot.RenderingServer.EnvironmentSdfgiYScale",
@@ -1291,15 +1453,33 @@
     "kind": "type",
     "state": "Replaced",
   },
+  "Godot.ResourceLoader": {
+    "value": "Godot.ResourceLoader.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.ResourceLoaderInstance": {
     "value": "Godot.ResourceLoader",
     "kind": "type",
     "state": "Replaced",
   },
+  "Godot.ResourceSaver": {
+    "value": "Godot.ResourceSaver.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.ResourceSaverInstance": {
     "value": "Godot.ResourceSaver",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.ResourceUid": {
+    "value": "Godot.ResourceUid.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.ResourceUidInstance": {
     "value": "Godot.ResourceUid",
@@ -1550,6 +1730,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.TextServerManager": {
+    "value": "Godot.TextServerManager.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.TextServerManager.InterfaceAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
@@ -1575,15 +1761,33 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.ThemeDB": {
+    "value": "Godot.ThemeDB.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.ThemeDBInstance": {
     "value": "Godot.ThemeDB",
     "kind": "type",
     "state": "Replaced",
   },
+  "Godot.Time": {
+    "value": "Godot.Time.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.TimeInstance": {
     "value": "Godot.Time",
     "kind": "type",
     "state": "Replaced",
+  },
+  "Godot.TranslationServer": {
+    "value": "Godot.TranslationServer.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.TranslationServerInstance": {
     "value": "Godot.TranslationServer",
@@ -1725,6 +1929,12 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
   },
+  "Godot.WorkerThreadPool": {
+    "value": "Godot.WorkerThreadPool.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
   "Godot.WorkerThreadPoolInstance": {
     "value": "Godot.WorkerThreadPool",
     "kind": "type",
@@ -1799,6 +2009,12 @@
     "kind": "type",
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+  },
+  "Godot.XRServer": {
+    "value": "Godot.XRServer.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
   },
   "Godot.XRServer.InterfaceAddedEventHandler": {
     "kind": "type",
@@ -4881,6 +5097,7 @@
     "kind": "method",
     "state": "Replaced",
     "isStatic": true,
+    "isSingleton": true,
   },
   "Godot.RenderingServerInstance.HasOsFeature": {
     "value": "Godot.RenderingServer.HasOSFeature",

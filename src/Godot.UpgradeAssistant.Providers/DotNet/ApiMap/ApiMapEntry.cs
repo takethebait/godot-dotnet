@@ -26,6 +26,8 @@ internal sealed class ApiMapEntry
 
     private bool _isExtension;
 
+    private bool _isSingleton;
+
     private bool _needsManualUpgrade;
 
     private bool _needsTodoInComment;
@@ -159,6 +161,24 @@ internal sealed class ApiMapEntry
         {
             ThrowIfReadOnly();
             _isExtension = value;
+        }
+    }
+
+    /// <summary>
+    /// Indicates whether the API is a singleton type or a member on a singleton type.
+    /// </summary>
+    /// <remarks>
+    /// Singleton types were generated as static classes in GodotSharp, but
+    /// in Godot .NET they are generated as instance classes with a static
+    /// singleton property.
+    /// </remarks>
+    public bool IsSingleton
+    {
+        get => _isSingleton;
+        set
+        {
+            ThrowIfReadOnly();
+            _isSingleton = value;
         }
     }
 

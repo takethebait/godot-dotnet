@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Threading;
 using Godot.Common.CodeAnalysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -144,6 +145,30 @@ internal sealed class ApiMapAnalyzer : DiagnosticAnalyzer
                     // Syntax node must be identifier name or generic name.
                     return;
                 }
+
+                if (mapping.IsSingleton)
+                {
+                    if (mapping.ValueDescriptor is null)
+                    {
+                        throw new InvalidOperationException(SR.FormatInvalidOperation_ApiMapEntryValueIsInvalid(mapping.Key));
+                    }
+
+                    // If this singleton is already accessed through the 'Singleton' property,
+                    // it's already fixed and we should not report a diagnostic.
+                    if (IsSingletonMemberAccessed(syntaxNode, mapping.ValueDescriptor.Identifier))
+                    {
+                        return;
+                    }
+                }
+
+                if (TypeChangeIsAlreadyHandledByMemberAccess(syntaxNode, semanticModel, targetGodotVersion, isGodotDotNetEnabled, context.CancellationToken))
+                {
+                    // If this type or namespace is accessed through another API that has its own mapping,
+                    // the more-specific member mapping will report the diagnostic. Skip here to avoid
+                    // duplicate diagnostics.
+                    return;
+                }
+
                 break;
             }
         }
@@ -194,5 +219,54 @@ internal sealed class ApiMapAnalyzer : DiagnosticAnalyzer
                 throw new InvalidOperationException(SR.FormatInvalidOperation_ApiMapEntryStateIsInvalid(mapping.State));
             }
         }
+    }
+
+    private static bool IsSingletonMemberAccessed(SyntaxNode syntaxNode, string singletonPropertyName)
+    {
+        if (string.IsNullOrEmpty(singletonPropertyName))
+        {
+            return false;
+        }
+
+        SyntaxNode fullNameNode = SyntaxUtils.GetFullNameSyntax(syntaxNode);
+
+        SyntaxNode? parent = fullNameNode.Parent;
+        return parent switch
+        {
+            QualifiedNameSyntax qualifiedName
+                => qualifiedName.Left.IsEquivalentTo(fullNameNode)
+                && qualifiedName.Right.Identifier.Text == singletonPropertyName,
+
+            MemberAccessExpressionSyntax memberAccess
+                => memberAccess.Expression.IsEquivalentTo(fullNameNode)
+                && memberAccess.Name.Identifier.Text == singletonPropertyName,
+
+            _ => false,
+        };
+    }
+
+    private static bool TypeChangeIsAlreadyHandledByMemberAccess(SyntaxNode syntaxNode, SemanticModel semanticModel, SemVer targetGodotVersion, bool isGodotDotNetEnabled, CancellationToken cancellationToken)
+    {
+        SyntaxNode fullNameNode = SyntaxUtils.GetFullNameSyntax(syntaxNode);
+
+        if (fullNameNode.Parent is not MemberAccessExpressionSyntax memberAccess
+         || !memberAccess.Expression.IsEquivalentTo(fullNameNode))
+        {
+            return false;
+        }
+
+        var memberSymbol = semanticModel.GetSymbolInfo(memberAccess, cancellationToken).Symbol;
+        if (memberSymbol is null)
+        {
+            return false;
+        }
+
+        var memberMapping = ApiMapUtils.GetApiEntryForSymbolAsync(memberSymbol, targetGodotVersion, isGodotDotNetEnabled, cancellationToken).AsTask().Result;
+        if (memberMapping is null)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
