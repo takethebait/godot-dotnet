@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetCurrent)</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <!--
+    Automatically determine the Runtime Identifier from the .NET SDK
+    and avoid appending the RID to the output path so the assembly
+    can be referenced by other projects from a predictable location.
+  -->
+  <PropertyGroup>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">$(NETCoreSdkRuntimeIdentifier)</RuntimeIdentifier>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsBuildTaskProject>true</IsBuildTaskProject>
+    <Description>MSBuild tasks to generate .NET bindings for the Godot game engine.</Description>
+    <DevelopmentDependency>true</DevelopmentDependency>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Godot.BindingsGenerator\Godot.BindingsGenerator.csproj" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="$(MicrosoftBuildUtilitiesCoreVersion)" />
+  </ItemGroup>
+
+</Project>
