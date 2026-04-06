@@ -19,18 +19,17 @@ public static partial class Mathf
     /// </summary>
     public const real_t Sqrt2 = (real_t)1.4142135623730950488016887242M;
 
-    // Epsilon size should depend on the precision used.
-    private const float EpsilonF = 1e-06f;
-    private const double EpsilonD = 1e-14;
+    // Must match CMP_EPSILON from 'core/math/math_defs.h'.
+    private const double CmpEpsilon = 0.00001;
 
     /// <summary>
     /// A very small number used for float comparison with error tolerance.
     /// 1e-06 with single-precision floats, but 1e-14 if <c>REAL_T_IS_DOUBLE</c>.
     /// </summary>
 #if REAL_T_IS_DOUBLE
-    public const real_t Epsilon = EpsilonD;
+    public const real_t Epsilon = 1e-14;
 #else
-    public const real_t Epsilon = EpsilonF;
+    public const real_t Epsilon = 1e-06f;
 #endif
 
     /// <summary>

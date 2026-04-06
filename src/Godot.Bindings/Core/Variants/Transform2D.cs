@@ -245,6 +245,32 @@ public struct Transform2D : IEquatable<Transform2D>
     }
 
     /// <summary>
+    /// Returns <see langword="true"/> if this transform's basis is conformal. A conformal basis is
+    /// both <i>orthogonal</i> (the axes are perpendicular to each other) and <c>uniform</c>,
+    /// (the axes share the same length). This method can be especially useful during physics
+    /// calculations.
+    /// </summary>
+    /// <returns>Whether this basis is conformal or not.</returns>
+    public readonly bool IsConformal()
+    {
+        // Non-flipped case.
+        if (Mathf.IsEqualApprox(this[0][0], this[1][1])
+         && Mathf.IsEqualApprox(this[0][1], -this[1][0]))
+        {
+            return true;
+        }
+
+        // Flipped case.
+        if (Mathf.IsEqualApprox(this[0][0], -this[1][1])
+         && Mathf.IsEqualApprox(this[0][1], this[1][0]))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
     /// Returns <see langword="true"/> if this transform is finite, by calling
     /// <see cref="real_t.IsFinite(real_t)"/> on each component.
     /// </summary>
@@ -330,8 +356,8 @@ public struct Transform2D : IEquatable<Transform2D>
     {
         return this with
         {
-            X = X * scale,
-            Y = Y * scale,
+            X = X * scale.X,
+            Y = Y * scale.Y,
         };
     }
 

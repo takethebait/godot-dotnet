@@ -263,9 +263,10 @@ public struct Color : IEquatable<Color>
     {
         return new Color
         (
-            R * 1.0f - amount,
-            G * 1.0f - amount,
-            B * 1.0f - amount
+            R * (1.0f - amount),
+            G * (1.0f - amount),
+            B * (1.0f - amount),
+            A
         );
     }
 
@@ -296,7 +297,8 @@ public struct Color : IEquatable<Color>
         (
             R + (1.0f - R) * amount,
             G + (1.0f - G) * amount,
-            B + (1.0f - B) * amount
+            B + (1.0f - B) * amount,
+            A
         );
     }
 
@@ -328,9 +330,9 @@ public struct Color : IEquatable<Color>
     {
         return new Color
         (
-            R < 0.0031308f ? 12.92f * R : (1.0f + 0.055f) * float.Pow(R, 1.0f / 2.4f) - 0.055f,
-            G < 0.0031308f ? 12.92f * G : (1.0f + 0.055f) * float.Pow(G, 1.0f / 2.4f) - 0.055f,
-            B < 0.0031308f ? 12.92f * B : (1.0f + 0.055f) * float.Pow(B, 1.0f / 2.4f) - 0.055f,
+            (float)(R < 0.0031308f ? 12.92f * R : (1.0 + 0.055) * float.Pow(R, 1.0f / 2.4f) - 0.055),
+            (float)(G < 0.0031308f ? 12.92f * G : (1.0 + 0.055) * float.Pow(G, 1.0f / 2.4f) - 0.055),
+            (float)(B < 0.0031308f ? 12.92f * B : (1.0 + 0.055) * float.Pow(B, 1.0f / 2.4f) - 0.055),
             A
         );
     }
@@ -345,9 +347,9 @@ public struct Color : IEquatable<Color>
     {
         return new Color
         (
-            R < 0.04045f ? R * (1.0f / 12.92f) : float.Pow((R + 0.055f) * (float)(1.0 / (1.0 + 0.055)), 2.4f),
-            G < 0.04045f ? G * (1.0f / 12.92f) : float.Pow((G + 0.055f) * (float)(1.0 / (1.0 + 0.055)), 2.4f),
-            B < 0.04045f ? B * (1.0f / 12.92f) : float.Pow((B + 0.055f) * (float)(1.0 / (1.0 + 0.055)), 2.4f),
+            R < 0.04045f ? R * (1.0f / 12.92f) : float.Pow((float)((R + 0.055) * (1.0 / (1.0 + 0.055))), 2.4f),
+            G < 0.04045f ? G * (1.0f / 12.92f) : float.Pow((float)((G + 0.055) * (1.0 / (1.0 + 0.055))), 2.4f),
+            B < 0.04045f ? B * (1.0f / 12.92f) : float.Pow((float)((B + 0.055) * (1.0 / (1.0 + 0.055))), 2.4f),
             A
         );
     }

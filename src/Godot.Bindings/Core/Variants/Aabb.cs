@@ -532,6 +532,78 @@ public struct Aabb : IEquatable<Aabb>
         return under && over;
     }
 
+    public readonly bool IntersectsRay(Vector3 from, Vector3 direction)
+    {
+        return IntersectsRay(from, direction, out _);
+    }
+
+    public readonly bool IntersectsRay(Vector3 from, Vector3 direction, out Vector3 intersectionPoint)
+    {
+        intersectionPoint = default;
+
+        Vector3 end = Position + Size;
+        real_t tmin = real_t.MinValue;
+        real_t tmax = real_t.MaxValue;
+        int axis = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (direction[i] == 0)
+            {
+                if ((from[i] < Position[i]) || (from[i] > end[i]))
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                // Ray not parallel to planes in this direction.
+                real_t t1 = (Position[i] - from[i]) / direction[i];
+                real_t t2 = (end[i] - from[i]) / direction[i];
+
+                if (t1 > t2)
+                {
+                    (t1, t2) = (t2, t1);
+                }
+                if (t1 >= tmin)
+                {
+                    tmin = t1;
+                    axis = i;
+                }
+                if (t2 < tmax)
+                {
+                    if (t2 < 0)
+                    {
+                        return false;
+                    }
+                    tmax = t2;
+                }
+                if (tmin > tmax)
+                {
+                    return false;
+                }
+            }
+        }
+
+        // Did the ray start from inside the box?
+        bool inside = tmin < 0;
+
+        intersectionPoint = from + direction * tmin;
+
+        // Prevent float error by making sure the point is exactly
+        // on the AABB border on the relevant axis.
+        intersectionPoint[axis] = (direction[axis] >= 0) ? Position[axis] : end[axis];
+
+        if (inside)
+        {
+            // When inside, the intersection point may be BEHIND the ray,
+            // so for general use we return the ray origin.
+            intersectionPoint = from;
+        }
+
+        return true;
+    }
+
     /// <summary>
     /// Returns <see langword="true"/> if the <see cref="Aabb"/> intersects
     /// the line segment between <paramref name="from"/> and <paramref name="to"/>.
@@ -543,6 +615,22 @@ public struct Aabb : IEquatable<Aabb>
     /// </returns>
     public readonly bool IntersectsSegment(Vector3 from, Vector3 to)
     {
+        return IntersectsSegment(from, to, out _);
+    }
+
+    /// <summary>
+    /// Returns <see langword="true"/> if the <see cref="Aabb"/> intersects
+    /// the line segment between <paramref name="from"/> and <paramref name="to"/>.
+    /// </summary>
+    /// <param name="from">The start of the line segment.</param>
+    /// <param name="to">The end of the line segment.</param>
+    /// <returns>
+    /// A <see langword="bool"/> for whether or not the <see cref="Aabb"/> intersects the line segment.
+    /// </returns>
+    public readonly bool IntersectsSegment(Vector3 from, Vector3 to, out Vector3 intersectionPoint)
+    {
+        intersectionPoint = default;
+
         real_t min = 0f;
         real_t max = 1f;
 
@@ -591,6 +679,10 @@ public struct Aabb : IEquatable<Aabb>
                 return false;
             }
         }
+
+        Vector3 rel = to - from;
+
+        intersectionPoint = from + rel * min;
 
         return true;
     }

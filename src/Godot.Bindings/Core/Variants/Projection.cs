@@ -165,7 +165,7 @@ public struct Projection : IEquatable<Projection>
         (
             new Vector4(1, 0, 0, 0),
             new Vector4(0, flipY ? -1 : 1, 0, 0),
-            new Vector4(0, 0, 0.5f, 0),
+            new Vector4(0, 0, -0.5f, 0),
             new Vector4(0, 0, 0.5f, 1)
         );
     }
@@ -500,13 +500,24 @@ public struct Projection : IEquatable<Projection>
     }
 
     /// <summary>
+    /// Returns a copy of this <see cref="Projection"/> with the signs of the values of the Y column flipped.
+    /// </summary>
+    /// <returns>The flipped projection.</returns>
+    public readonly Projection FlippedY()
+    {
+        return this with { Y = -Y };
+    }
+
+    /// <summary>
     /// Returns the X:Y aspect ratio of this <see cref="Projection"/>'s viewport.
     /// </summary>
     /// <returns>The aspect ratio from this projection's viewport.</returns>
     public readonly real_t GetAspect()
     {
-        Vector2 vpHe = GetViewportHalfExtents();
-        return vpHe.X / vpHe.Y;
+        // NOTE: This assumes a rectangular projection plane, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - The projection plane is rectangular (i.e. columns [0][2] and [1][2] == 0 if columns [2][3] != 0)
+        return this[1][1] / this[0][0];
     }
 
     /// <summary>
@@ -515,15 +526,19 @@ public struct Projection : IEquatable<Projection>
     /// <returns>The horizontal field of view of this projection.</returns>
     public readonly real_t GetFov()
     {
-        Plane rightPlane = new Plane(X.W - X.X, Y.W - Y.X, Z.W - Z.X, -W.W + W.X).Normalized();
-        if (Z.X == 0 && Z.Y == 0)
+        // NOTE: This assumes a rectangular projection plane, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - The projection plane is rectangular (i.e. columns [0][2] and [1][2] == 0 if columns [2][3] != 0)
+        if (this[2][0] == 0)
         {
-            return real_t.RadiansToDegrees(real_t.Acos(real_t.Abs(rightPlane.Normal.X))) * 2.0f;
+            return real_t.RadiansToDegrees(2 * real_t.Atan2(1, this[0][0]));
         }
         else
         {
-            Plane leftPlane = new Plane(X.W + X.X, Y.W + Y.X, Z.W + Z.X, W.W + W.X).Normalized();
-            return real_t.RadiansToDegrees(real_t.Acos(real_t.Abs(leftPlane.Normal.X))) + real_t.RadiansToDegrees(real_t.Acos(real_t.Abs(rightPlane.Normal.X)));
+            // The frustum is asymmetrical so we need to calculate the left and right angles separately.
+            real_t right = real_t.Atan2(this[2][0] + 1, this[0][0]);
+            real_t left = real_t.Atan2(this[2][0] - 1, this[0][0]);
+            return real_t.RadiansToDegrees(right - left);
         }
     }
 
@@ -545,29 +560,25 @@ public struct Projection : IEquatable<Projection>
     /// <returns>The level of detail factor for this projection.</returns>
     public readonly real_t GetLodMultiplier()
     {
-        if (IsOrthogonal())
-        {
-            return GetViewportHalfExtents().X;
-        }
-        else
-        {
-            real_t zn = GetZNear();
-            real_t width = GetViewportHalfExtents().X * 2.0f;
-            return 1.0f / (zn / width);
-        }
+        // NOTE: This assumes a rectangular projection plane, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - The projection plane is rectangular (i.e. columns [0][2] and [1][2] == 0 if columns [2][3] != 0)
+        return 2 / this[0][0];
     }
 
     /// <summary>
-    /// Returns the number of pixels with the given pixel width displayed per meter, after
-    /// this <see cref="Projection"/> is applied.
+    /// Returns <paramref name="forPixelWidth"/> divided by the viewport's width measured in meters on the near plane,
+    /// after this <see cref="Projection"/> is applied.
     /// </summary>
     /// <param name="forPixelWidth">The width for each pixel (in meters).</param>
     /// <returns>The number of pixels per meter.</returns>
-    public readonly int GetPixelsPerMeter(int forPixelWidth)
+    public readonly real_t GetPixelsPerMeter(int forPixelWidth)
     {
-        Vector3 result = this * new Vector3(1, 0, -1);
-
-        return (int)((result.X * 0.5f + 0.5f) * forPixelWidth);
+        // NOTE: This assumes a rectangular projection plane, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - The projection plane is rectangular (i.e. columns [0][2] and [1][2] == 0 if columns [2][3] != 0)
+        real_t width = 2 * (-GetZNear() * this[2][3] + this[3][3]) / this[0][0];
+        return forPixelWidth / width;
     }
 
     /// <summary>
@@ -601,12 +612,12 @@ public struct Projection : IEquatable<Projection>
     /// <returns>The half extents for this projection's far plane.</returns>
     public readonly Vector2 GetFarPlaneHalfExtents()
     {
-        Plane farPlane = GetProjectionPlane(Planes.Far);
-        Plane rightPlane = GetProjectionPlane(Planes.Right);
-        Plane topPlane = GetProjectionPlane(Planes.Top);
-
-        Vector3 res = farPlane.Intersect3(rightPlane, topPlane) ?? Vector3.Zero;
-        return new Vector2(res.X, res.Y);
+        // NOTE: This assumes a symmetrical frustum, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - The projection plane is rectangular (i.e. columns [0][2] and [1][2] == 0 if columns [2][3] != 0)
+        // - There is no offset / skew (i.e. columns [2][0] == columns [2][1] == 0)
+        real_t w = -GetZFar() * this[2][3] + this[3][3];
+        return new Vector2(w / this[0][0], w / this[1][1]);
     }
 
     /// <summary>
@@ -616,12 +627,12 @@ public struct Projection : IEquatable<Projection>
     /// <returns>The half extents for this projection's viewport plane.</returns>
     public readonly Vector2 GetViewportHalfExtents()
     {
-        Plane nearPlane = GetProjectionPlane(Planes.Near);
-        Plane rightPlane = GetProjectionPlane(Planes.Right);
-        Plane topPlane = GetProjectionPlane(Planes.Top);
-
-        Vector3 res = nearPlane.Intersect3(rightPlane, topPlane) ?? Vector3.Zero;
-        return new Vector2(res.X, res.Y);
+        // NOTE: This assumes a symmetrical frustum, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - The projection plane is rectangular (i.e. columns [0][2] and [1][2] == 0 if columns [2][3] != 0)
+        // - There is no offset / skew (i.e. columns [2][0] == columns [2][1] == 0)
+        real_t w = -GetZNear() * this[2][3] + this[3][3];
+        return new Vector2(w / this[0][0], w / this[1][1]);
     }
 
     /// <summary>
@@ -630,7 +641,10 @@ public struct Projection : IEquatable<Projection>
     /// <returns>The distance beyond which positions are clipped.</returns>
     public readonly real_t GetZFar()
     {
-        return GetProjectionPlane(Planes.Far).D;
+        // NOTE: This assumes z-facing near and far planes, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - Near and far planes are z-facing (i.e. columns [0][2] and [1][2] == 0)
+        return (this[3][3] - this[3][2]) / (this[2][3] - this[2][2]);
     }
 
     /// <summary>
@@ -639,16 +653,290 @@ public struct Projection : IEquatable<Projection>
     /// <returns>The distance before which positions are clipped.</returns>
     public readonly real_t GetZNear()
     {
-        return -GetProjectionPlane(Planes.Near).D;
+        // NOTE: This assumes z-facing near and far planes, i.e. that:
+        // - The matrix is a projection across z-axis (i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0)
+        // - Near and far planes are z-facing (i.e. columns [0][2] and [1][2] == 0)
+        return (this[3][3] + this[3][2]) / (this[2][3] + this[2][2]);
     }
 
     /// <summary>
-    /// Returns a copy of this <see cref="Projection"/> with the signs of the values of the Y column flipped.
+    /// Returns a <see cref="Projection"/> that performs the inverse of this <see cref="Projection"/>'s
+    /// projective transformation.
     /// </summary>
-    /// <returns>The flipped projection.</returns>
-    public readonly Projection FlippedY()
+    /// <returns>The inverted projection.</returns>
+    public readonly Projection Inverse()
     {
-        return this with { Y = -Y };
+        Projection temp = default;
+
+        real_t m0, m1, m2, m3, s;
+
+        Span<real_t> r0 = stackalloc real_t[8];
+        Span<real_t> r1 = stackalloc real_t[8];
+        Span<real_t> r2 = stackalloc real_t[8];
+        Span<real_t> r3 = stackalloc real_t[8];
+
+        r0[0] = this[row: 0, column: 0];
+        r0[1] = this[row: 0, column: 1];
+        r0[2] = this[row: 0, column: 2];
+        r0[3] = this[row: 0, column: 3];
+        r0[4] = 1.0f;
+        r0[5] = 0.0f;
+        r0[6] = 0.0f;
+        r0[7] = 0.0f;
+
+        r1[0] = this[row: 1, column: 0];
+        r1[1] = this[row: 1, column: 1];
+        r1[2] = this[row: 1, column: 2];
+        r1[3] = this[row: 1, column: 3];
+        r1[4] = 0.0f;
+        r1[5] = 1.0f;
+        r1[6] = 0.0f;
+        r1[7] = 0.0f;
+
+        r2[0] = this[row: 2, column: 0];
+        r2[1] = this[row: 2, column: 1];
+        r2[2] = this[row: 2, column: 2];
+        r2[3] = this[row: 2, column: 3];
+        r2[4] = 0.0f;
+        r2[5] = 0.0f;
+        r2[6] = 1.0f;
+        r2[7] = 0.0f;
+
+        r3[0] = this[row: 3, column: 0];
+        r3[1] = this[row: 3, column: 1];
+        r3[2] = this[row: 3, column: 2];
+        r3[3] = this[row: 3, column: 3];
+        r3[4] = 0.0f;
+        r3[5] = 0.0f;
+        r3[6] = 0.0f;
+        r3[7] = 1.0f;
+
+        // Choose pivot - or die.
+        if (Mathf.Abs(r3[0]) > Mathf.Abs(r2[0]))
+        {
+            Span<real_t> tempSpan = r2;
+            r2 = r3;
+            r3 = tempSpan;
+        }
+        if (Mathf.Abs(r2[0]) > Mathf.Abs(r1[0]))
+        {
+            Span<real_t> tempSpan = r1;
+            r1 = r2;
+            r2 = tempSpan;
+        }
+        if (Mathf.Abs(r1[0]) > Mathf.Abs(r0[0]))
+        {
+            Span<real_t> tempSpan = r0;
+            r0 = r1;
+            r1 = tempSpan;
+        }
+        ThrowIfSingular(r0[0] == 0.0f);
+
+        // Eliminate first variable.
+        m1 = r1[0] / r0[0];
+        m2 = r2[0] / r0[0];
+        m3 = r3[0] / r0[0];
+        s = r0[1];
+        r1[1] -= m1 * s;
+        r2[1] -= m2 * s;
+        r3[1] -= m3 * s;
+        s = r0[2];
+        r1[2] -= m1 * s;
+        r2[2] -= m2 * s;
+        r3[2] -= m3 * s;
+        s = r0[3];
+        r1[3] -= m1 * s;
+        r2[3] -= m2 * s;
+        r3[3] -= m3 * s;
+        s = r0[4];
+        if (s != 0.0f)
+        {
+            r1[4] -= m1 * s;
+            r2[4] -= m2 * s;
+            r3[4] -= m3 * s;
+        }
+        s = r0[5];
+        if (s != 0.0f)
+        {
+            r1[5] -= m1 * s;
+            r2[5] -= m2 * s;
+            r3[5] -= m3 * s;
+        }
+        s = r0[6];
+        if (s != 0.0f)
+        {
+            r1[6] -= m1 * s;
+            r2[6] -= m2 * s;
+            r3[6] -= m3 * s;
+        }
+        s = r0[7];
+        if (s != 0.0f)
+        {
+            r1[7] -= m1 * s;
+            r2[7] -= m2 * s;
+            r3[7] -= m3 * s;
+        }
+
+        //  Chose pivot - or die.
+        if (Mathf.Abs(r3[1]) > Mathf.Abs(r2[1]))
+        {
+            Span<real_t> tempSpan = r2;
+            r2 = r3;
+            r3 = tempSpan;
+        }
+        if (Mathf.Abs(r2[1]) > Mathf.Abs(r1[1]))
+        {
+            Span<real_t> tempSpan = r1;
+            r1 = r2;
+            r2 = tempSpan;
+        }
+        ThrowIfSingular(r1[1] == 0.0f);
+
+        // Eliminate second variable.
+        m2 = r2[1] / r1[1];
+        m3 = r3[1] / r1[1];
+        r2[2] -= m2 * r1[2];
+        r3[2] -= m3 * r1[2];
+        r2[3] -= m2 * r1[3];
+        r3[3] -= m3 * r1[3];
+        s = r1[4];
+        if (s != 0.0f)
+        {
+            r2[4] -= m2 * s;
+            r3[4] -= m3 * s;
+        }
+        s = r1[5];
+        if (s != 0.0f)
+        {
+            r2[5] -= m2 * s;
+            r3[5] -= m3 * s;
+        }
+        s = r1[6];
+        if (s != 0.0f)
+        {
+            r2[6] -= m2 * s;
+            r3[6] -= m3 * s;
+        }
+        s = r1[7];
+        if (s != 0.0f)
+        {
+            r2[7] -= m2 * s;
+            r3[7] -= m3 * s;
+        }
+
+        // Choose pivot - or die.
+        if (Mathf.Abs(r3[2]) > Mathf.Abs(r2[2]))
+        {
+            Span<real_t> tempSpan = r2;
+            r2 = r3;
+            r3 = tempSpan;
+        }
+        ThrowIfSingular(r2[2] == 0.0f);
+
+        // Eliminate third variable.
+        m3 = r3[2] / r2[2];
+        r3[3] -= m3 * r2[3];
+        r3[4] -= m3 * r2[4];
+        r3[5] -= m3 * r2[5];
+        r3[6] -= m3 * r2[6];
+        r3[7] -= m3 * r2[7];
+
+        // Last check.
+        ThrowIfSingular(r3[3] == 0.0f);
+
+        s = 1.0f / r3[3]; // Now back substitute row 3.
+        r3[4] *= s;
+        r3[5] *= s;
+        r3[6] *= s;
+        r3[7] *= s;
+
+        m2 = r2[3]; // Now back substitute row 2.
+        s = 1.0f / r2[2];
+        r2[4] = s * (r2[4] - r3[4] * m2);
+        r2[5] = s * (r2[5] - r3[5] * m2);
+        r2[6] = s * (r2[6] - r3[6] * m2);
+        r2[7] = s * (r2[7] - r3[7] * m2);
+        m1 = r1[3];
+        r1[4] -= r3[4] * m1;
+        r1[5] -= r3[5] * m1;
+        r1[6] -= r3[6] * m1;
+        r1[7] -= r3[7] * m1;
+        m0 = r0[3];
+        r0[4] -= r3[4] * m0;
+        r0[5] -= r3[5] * m0;
+        r0[6] -= r3[6] * m0;
+        r0[7] -= r3[7] * m0;
+
+        m1 = r1[2]; // Now back substitute row 1.
+        s = 1.0f / r1[1];
+        r1[4] = s * (r1[4] - r2[4] * m1);
+        r1[5] = s * (r1[5] - r2[5] * m1);
+        r1[6] = s * (r1[6] - r2[6] * m1);
+        r1[7] = s * (r1[7] - r2[7] * m1);
+        m0 = r0[2];
+        r0[4] -= r2[4] * m0;
+        r0[5] -= r2[5] * m0;
+        r0[6] -= r2[6] * m0;
+        r0[7] -= r2[7] * m0;
+
+        m0 = r0[1]; // Now back substitute row 0.
+        s = 1.0f / r0[0];
+        r0[4] = s * (r0[4] - r1[4] * m0);
+        r0[5] = s * (r0[5] - r1[5] * m0);
+        r0[6] = s * (r0[6] - r1[6] * m0);
+        r0[7] = s * (r0[7] - r1[7] * m0);
+
+        temp[row: 0, column: 0] = r0[4];
+        temp[row: 0, column: 1] = r0[5];
+        temp[row: 0, column: 2] = r0[6];
+        temp[row: 0, column: 3] = r0[7];
+        temp[row: 1, column: 0] = r1[4];
+        temp[row: 1, column: 1] = r1[5];
+        temp[row: 1, column: 2] = r1[6];
+        temp[row: 1, column: 3] = r1[7];
+        temp[row: 2, column: 0] = r2[4];
+        temp[row: 2, column: 1] = r2[5];
+        temp[row: 2, column: 2] = r2[6];
+        temp[row: 2, column: 3] = r2[7];
+        temp[row: 3, column: 0] = r3[4];
+        temp[row: 3, column: 1] = r3[5];
+        temp[row: 3, column: 2] = r3[6];
+        temp[row: 3, column: 3] = r3[7];
+
+        return temp;
+
+        static void ThrowIfSingular(bool condition)
+        {
+            if (condition)
+            {
+                throw new InvalidOperationException("Matrix is singular and cannot be inverted.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Returns <see langword="true"/> if this <see cref="Projection"/> performs an orthogonal projection.
+    /// </summary>
+    /// <returns>If the projection performs an orthogonal projection.</returns>
+    public readonly bool IsOrthogonal()
+    {
+        // NOTE: This assumes that the matrix is a projection across z-axis
+        // i.e. is invertible and columns [0][1], [0][3], [1][0], and [1][3] == 0
+        return this[2][3] == 0;
+    }
+
+    /// <summary>
+    /// Returns a <see cref="Projection"/> with the X and Y values from the given <see cref="Vector2"/>
+    /// added to the first and second values of the final column respectively.
+    /// </summary>
+    /// <param name="offset">The offset to apply to the projection.</param>
+    /// <returns>The offsetted projection.</returns>
+    public readonly Projection JitterOffseted(Vector2 offset)
+    {
+        Projection projection = this;
+        projection.W.X += offset.X;
+        projection.W.Y += offset.Y;
+        return projection;
     }
 
     /// <summary>
@@ -667,167 +955,6 @@ public struct Projection : IEquatable<Projection>
         projection.Z.Z = -(zFar + zNear) / deltaZ;
         projection.W.Z = -2 * zNear * zFar / deltaZ;
         return projection;
-    }
-
-    /// <summary>
-    /// Returns a <see cref="Projection"/> with the X and Y values from the given <see cref="Vector2"/>
-    /// added to the first and second values of the final column respectively.
-    /// </summary>
-    /// <param name="offset">The offset to apply to the projection.</param>
-    /// <returns>The offsetted projection.</returns>
-    public readonly Projection JitterOffseted(Vector2 offset)
-    {
-        Projection projection = this;
-        projection.W.X += offset.X;
-        projection.W.Y += offset.Y;
-        return projection;
-    }
-
-    /// <summary>
-    /// Returns a <see cref="Projection"/> that performs the inverse of this <see cref="Projection"/>'s
-    /// projective transformation.
-    /// </summary>
-    /// <returns>The inverted projection.</returns>
-    public readonly Projection Inverse()
-    {
-        Projection projection = this;
-        int i, j, k;
-        // Locations of pivot matrix.
-        Span<int> pivotI = stackalloc int[4];
-        Span<int> pivotJ = stackalloc int[4];
-        // Value of current pivot element.
-        real_t pivotValue;
-        // Temporary storage.
-        real_t hold;
-        real_t determinant = 1.0f;
-        for (k = 0; k < 4; k++)
-        {
-            // Locate k'th pivot element.
-            // Initialize for search.
-            pivotValue = projection[k][k];
-            pivotI[k] = k;
-            pivotJ[k] = k;
-            for (i = k; i < 4; i++)
-            {
-                for (j = k; j < 4; j++)
-                {
-                    if (real_t.Abs(projection[i][j]) > real_t.Abs(pivotValue))
-                    {
-                        pivotI[k] = i;
-                        pivotJ[k] = j;
-                        pivotValue = projection[i][j];
-                    }
-                }
-            }
-
-            // Product of pivots, gives determinant when finished.
-            determinant *= pivotValue;
-            if (Mathf.IsZeroApprox(determinant))
-            {
-                return Zero;
-            }
-
-            // "Interchange" rows (with sign change stuff).
-            i = pivotI[k];
-            if (i != k)
-            {
-                // If rows are different.
-                for (j = 0; j < 4; j++)
-                {
-                    hold = -projection[k][j];
-                    projection[k, j] = projection[i][j];
-                    projection[i, j] = hold;
-                }
-            }
-
-            // "Interchange" columns.
-            j = pivotJ[k];
-            if (j != k)
-            {
-                // If columns are different.
-                for (i = 0; i < 4; i++)
-                {
-                    hold = -projection[i][k];
-                    projection[i, k] = projection[i][j];
-                    projection[i, j] = hold;
-                }
-            }
-
-            // Divide column by minus pivot value.
-            for (i = 0; i < 4; i++)
-            {
-                if (i != k)
-                {
-                    projection[i, k] /= -pivotValue;
-                }
-            }
-
-            // Reduce the matrix.
-            for (i = 0; i < 4; i++)
-            {
-                hold = projection[i][k];
-                for (j = 0; j < 4; j++)
-                {
-                    if (i != k && j != k)
-                    {
-                        projection[i, j] += hold * projection[k][j];
-                    }
-                }
-            }
-
-            // Divide row by pivot.
-            for (j = 0; j < 4; j++)
-            {
-                if (j != k)
-                {
-                    projection[k, j] /= pivotValue;
-                }
-            }
-
-            // Replace pivot by reciprocal (at last we can touch it).
-            projection[k, k] = 1.0f / pivotValue;
-        }
-
-        // That was most of the work, one final pass of row/column interchange to finish.
-        for (k = 4 - 2; k >= 0; k--)
-        {
-            // Don't need to work with 1 by 1 corner.
-            // Rows to swap correspond to pivot COLUMN.
-            i = pivotJ[k];
-            if (i != k)
-            {
-                // If rows are different.
-                for (j = 0; j < 4; j++)
-                {
-                    hold = projection[k][j];
-                    projection[k, j] = -projection[i][j];
-                    projection[i, j] = hold;
-                }
-            }
-
-            // Columns to swap correspond to pivot ROW.
-            j = pivotI[k];
-            if (j != k)
-            {
-                // If columns are different.
-                for (i = 0; i < 4; i++)
-                {
-                    hold = projection[i][k];
-                    projection[i, k] = -projection[i][j];
-                    projection[i, j] = hold;
-                }
-            }
-        }
-        return projection;
-    }
-
-    /// <summary>
-    /// Returns <see langword="true"/> if this <see cref="Projection"/> performs an orthogonal projection.
-    /// </summary>
-    /// <returns>If the projection performs an orthogonal projection.</returns>
-    public readonly bool IsOrthogonal()
-    {
-        return W.W == 1.0f;
     }
 
     /// <summary>

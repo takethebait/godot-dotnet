@@ -590,6 +590,26 @@ public struct Basis : IEquatable<Basis>
     }
 
     /// <summary>
+    /// Returns <see langword="true"/> if this basis is conformal. A conformal basis is both
+    /// <i>orthogonal</i> (the axes are perpendicular to each other) and <c>uniform</c>,
+    /// (the axes share the same length). This method can be especially useful during physics
+    /// calculations.
+    /// </summary>
+    /// <returns>Whether this basis is conformal or not.</returns>
+    public readonly bool IsConformal()
+    {
+        Vector3 x = Column0;
+        Vector3 y = Column1;
+        Vector3 z = Column2;
+        real_t xLengthSquared = x.LengthSquared();
+        return Mathf.IsEqualApprox(xLengthSquared, y.LengthSquared())
+            && Mathf.IsEqualApprox(xLengthSquared, z.LengthSquared())
+            && Mathf.IsZeroApprox(x.Dot(y))
+            && Mathf.IsZeroApprox(x.Dot(z))
+            && Mathf.IsZeroApprox(y.Dot(z));
+    }
+
+    /// <summary>
     /// Returns <see langword="true"/> if this basis is finite, by calling
     /// <see cref="real_t.IsFinite(real_t)"/> on each component.
     /// </summary>
@@ -597,6 +617,26 @@ public struct Basis : IEquatable<Basis>
     public readonly bool IsFinite()
     {
         return Row0.IsFinite() && Row1.IsFinite() && Row2.IsFinite();
+    }
+
+    /// <summary>
+    /// Returns <see langword="true"/> if this basis is orthonormal. An orthonormal basis is both
+    /// <i>orthogonal</i> (the axes are perpendicular to each other) and <i>normalized</i>
+    /// (the length of every axis is <c>1.0</c>). This method can be especially useful during
+    /// physics calculations.
+    /// </summary>
+    /// <returns>Whether this basis is orthonormal or not.</returns>
+    public readonly bool IsOrthonormal()
+    {
+        Vector3 x = Column0;
+        Vector3 y = Column1;
+        Vector3 z = Column2;
+        return Mathf.IsEqualApprox(x.LengthSquared(), 1)
+            && Mathf.IsEqualApprox(y.LengthSquared(), 1)
+            && Mathf.IsEqualApprox(z.LengthSquared(), 1)
+            && Mathf.IsZeroApprox(x.Dot(y))
+            && Mathf.IsZeroApprox(x.Dot(z))
+            && Mathf.IsZeroApprox(y.Dot(z));
     }
 
     internal readonly Basis Lerp(Basis to, real_t weight)
@@ -663,9 +703,9 @@ public struct Basis : IEquatable<Basis>
     /// <returns>An orthonormalized basis matrix.</returns>
     public readonly Basis Orthonormalized()
     {
-        Vector3 column0 = this[0];
-        Vector3 column1 = this[1];
-        Vector3 column2 = this[2];
+        Vector3 column0 = Column0;
+        Vector3 column1 = Column1;
+        Vector3 column2 = Column2;
 
         column0.Normalize();
         column1 -= column0 * column0.Dot(column1);

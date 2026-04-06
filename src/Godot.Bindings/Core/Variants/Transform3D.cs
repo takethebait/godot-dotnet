@@ -211,7 +211,8 @@ public struct Transform3D : IEquatable<Transform3D>
     /// <returns>The rotated transformation matrix.</returns>
     public readonly Transform3D Rotated(Vector3 axis, real_t angle)
     {
-        return new Transform3D(new Basis(axis, angle), new Vector3()) * this;
+        Basis tmpBasis = new Basis(axis, angle);
+        return new Transform3D(tmpBasis * Basis, tmpBasis * Origin);
     }
 
     /// <summary>
@@ -250,8 +251,7 @@ public struct Transform3D : IEquatable<Transform3D>
     /// <returns>The scaled transformation matrix.</returns>
     public readonly Transform3D ScaledLocal(Vector3 scale)
     {
-        Basis tmpBasis = Basis.FromScale(scale);
-        return new Transform3D(Basis * tmpBasis, Origin);
+        return new Transform3D(Basis.ScaledLocal(scale), Origin);
     }
 
     /// <summary>
@@ -275,12 +275,7 @@ public struct Transform3D : IEquatable<Transform3D>
     /// <returns>The translated matrix.</returns>
     public readonly Transform3D TranslatedLocal(Vector3 offset)
     {
-        return new Transform3D(Basis, new Vector3
-        (
-            Origin[0] + Basis.Row0.Dot(offset),
-            Origin[1] + Basis.Row1.Dot(offset),
-            Origin[2] + Basis.Row2.Dot(offset)
-        ));
+        return new Transform3D(Basis, Origin + Basis * offset);
     }
 
     /// <summary>

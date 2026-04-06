@@ -987,51 +987,51 @@ public static partial class Mathf
     }
 
     /// <summary>
-    /// Returns <see langword="true"/> if <paramref name="a"/> and <paramref name="b"/> are approximately equal
+    /// Returns <see langword="true"/> if <paramref name="left"/> and <paramref name="right"/> are approximately equal
     /// to each other.
     /// The comparison is done using a tolerance calculation with <see cref="Epsilon"/>.
     /// </summary>
-    /// <param name="a">One of the values.</param>
-    /// <param name="b">The other value.</param>
+    /// <param name="left">One of the values.</param>
+    /// <param name="right">The other value.</param>
     /// <returns>A <see langword="bool"/> for whether or not the two values are approximately equal.</returns>
-    public static bool IsEqualApprox(float a, float b)
+    public static bool IsEqualApprox(float left, float right)
     {
         // Check for exact equality first, required to handle "infinity" values.
-        if (a == b)
+        if (left == right)
         {
             return true;
         }
         // Then check for approximate equality.
-        float tolerance = EpsilonF * float.Abs(a);
-        if (tolerance < EpsilonF)
+        float tolerance = (float)CmpEpsilon * float.Abs(left);
+        if (tolerance < (float)CmpEpsilon)
         {
-            tolerance = EpsilonF;
+            tolerance = (float)CmpEpsilon;
         }
-        return float.Abs(a - b) < tolerance;
+        return float.Abs(left - right) < tolerance;
     }
 
     /// <summary>
-    /// Returns <see langword="true"/> if <paramref name="a"/> and <paramref name="b"/> are approximately equal
+    /// Returns <see langword="true"/> if <paramref name="left"/> and <paramref name="right"/> are approximately equal
     /// to each other.
     /// The comparison is done using a tolerance calculation with <see cref="Epsilon"/>.
     /// </summary>
-    /// <param name="a">One of the values.</param>
-    /// <param name="b">The other value.</param>
+    /// <param name="left">One of the values.</param>
+    /// <param name="right">The other value.</param>
     /// <returns>A <see langword="bool"/> for whether or not the two values are approximately equal.</returns>
-    public static bool IsEqualApprox(double a, double b)
+    public static bool IsEqualApprox(double left, double right)
     {
         // Check for exact equality first, required to handle "infinity" values.
-        if (a == b)
+        if (left == right)
         {
             return true;
         }
         // Then check for approximate equality.
-        double tolerance = EpsilonD * double.Abs(a);
-        if (tolerance < EpsilonD)
+        double tolerance = CmpEpsilon * double.Abs(left);
+        if (tolerance < CmpEpsilon)
         {
-            tolerance = EpsilonD;
+            tolerance = CmpEpsilon;
         }
-        return double.Abs(a - b) < tolerance;
+        return double.Abs(left - right) < tolerance;
     }
 
     /// <summary>
@@ -1114,7 +1114,7 @@ public static partial class Mathf
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsZeroApprox(float s)
     {
-        return float.Abs(s) < EpsilonF;
+        return float.Abs(s) < (float)CmpEpsilon;
     }
 
     /// <summary>
@@ -1129,7 +1129,7 @@ public static partial class Mathf
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsZeroApprox(double s)
     {
-        return double.Abs(s) < EpsilonD;
+        return double.Abs(s) < CmpEpsilon;
     }
 
     /// <summary>
