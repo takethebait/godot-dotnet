@@ -256,8 +256,7 @@ public partial struct Variant : IDisposable
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly string AsString()
     {
-        using NativeGodotString value = NativeGodotVariant.GetOrConvertToString(NativeValue.DangerousSelfRef);
-        return value.ToString();
+        return NativeGodotVariant.GetOrConvertToString(NativeValue.DangerousSelfRef).ToString();
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -411,8 +411,7 @@ partial class Marshalling
 
         if (typeof(T) == typeof(string))
         {
-            using NativeGodotString valueNative = NativeGodotVariant.GetOrConvertToString(value);
-            return UnsafeAsT(valueNative.ToString());
+            return UnsafeAsT(NativeGodotVariant.GetOrConvertToString(value).ToString());
         }
 
         if (typeof(T) == typeof(Aabb))
