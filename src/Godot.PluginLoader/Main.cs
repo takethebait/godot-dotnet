@@ -21,6 +21,12 @@ internal static unsafe class Main
             LoadAssemblyCore(assemblyPathNative, fullyQualifiedTypeNameNative, methodNameNative, outGDExtensionInitializationFunction);
             return true;
         }
+        catch (GodotSharpAssemblyException)
+        {
+            // This means the user project hasn't been upgraded yet, so we just fail to load and the editor
+            // will take care of showing that the assembly wasn't loaded and needs to be rebuilt.
+            return false;
+        }
         catch (Exception e)
         {
             Console.Error.WriteLine($"Failed to load assembly. Exception: {e}");
@@ -67,7 +73,7 @@ internal static unsafe class Main
 
             if (IsGodotSharpAssembly(assembly))
             {
-                throw new InvalidOperationException("Assembly uses old GodotSharp bindings.");
+                throw new GodotSharpAssemblyException("Assembly uses old GodotSharp bindings.");
             }
 
             var type = Type.GetType(fullyQualifiedTypeName, alc.LoadFromAssemblyName, null, throwOnError: true)!;
@@ -143,5 +149,10 @@ internal static unsafe class Main
         string? result = Marshal.PtrToStringAuto(stringNative);
         ArgumentNullException.ThrowIfNull(result, paramName);
         return result;
+    }
+
+    private sealed class GodotSharpAssemblyException : Exception
+    {
+        public GodotSharpAssemblyException(string message) : base(message) { }
     }
 }
