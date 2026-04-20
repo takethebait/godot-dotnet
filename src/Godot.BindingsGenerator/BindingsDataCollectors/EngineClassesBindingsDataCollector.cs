@@ -255,6 +255,10 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
             {
                 var returnType = context.TypeDB.GetTypeFromEngineName(engineMethod.ReturnValue.Type, engineMethod.ReturnValue.Meta);
                 method.ReturnParameter = ReturnInfo.FromType(returnType);
+                if (engineMethod.ReturnValue.Meta == "required")
+                {
+                    method.ReturnParameter.Attributes.Add("[return: global::System.Diagnostics.CodeAnalysis.NotNull]");
+                }
             }
 
             if (engineMethod.IsVirtual)
@@ -273,6 +277,10 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                 string argName = NamingUtils.SnakeToCamelCase(arg.Name);
                 var argType = context.TypeDB.GetTypeFromEngineName(arg.Type, arg.Meta);
                 var parameter = new ParameterInfo(argName, argType);
+                if (arg.Meta == "required")
+                {
+                    parameter.Attributes.Add("[global::System.Diagnostics.CodeAnalysis.DisallowNull]");
+                }
                 context.ApplyDefaultValue(arg, parameter);
                 method.Parameters.Add(parameter);
             }
@@ -517,6 +525,10 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                 string argName = NamingUtils.SnakeToCamelCase(arg.Name);
                 var argType = context.TypeDB.GetTypeFromEngineName(arg.Type, arg.Meta);
                 var parameter = new ParameterInfo(argName, argType);
+                if (arg.Meta == "required")
+                {
+                    parameter.Attributes.Add("[global::System.Diagnostics.CodeAnalysis.DisallowNull]");
+                }
                 signalParameters.Add(parameter);
                 signalParameterTypes.Add(argType);
             }
@@ -612,6 +624,21 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                 Parameters = signalParameters,
                 Body = MethodBody.Create(writer =>
                 {
+                    bool hasPreconditions = false;
+                    foreach (var parameter in signalParameters)
+                    {
+                        if (parameter.Attributes.Contains("[global::System.Diagnostics.CodeAnalysis.DisallowNull]"))
+                        {
+                            string paramName = SourceCodeWriter.EscapeIdentifier(parameter.Name);
+                            writer.WriteLine($"global::System.ArgumentNullException.ThrowIfNull({paramName});");
+                            hasPreconditions = true;
+                        }
+                    }
+                    if (hasPreconditions)
+                    {
+                        writer.WriteLineNoTabs("");
+                    }
+
                     writer.Write($"EmitSignal(SignalName.{@event.Name}, [");
                     foreach (var parameter in signalParameters)
                     {

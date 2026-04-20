@@ -9,6 +9,21 @@ internal abstract class CallMethodBody<TContext> : MethodBody where TContext : C
     {
         var context = CreateContext(owner);
 
+        bool hasPreconditions = false;
+        foreach (var parameter in context.Parameters)
+        {
+            if (parameter.Attributes.Contains("[global::System.Diagnostics.CodeAnalysis.DisallowNull]"))
+            {
+                string parameterName = SourceCodeWriter.EscapeIdentifier(parameter.Name);
+                writer.WriteLine($"global::System.ArgumentNullException.ThrowIfNull({parameterName});");
+                hasPreconditions = true;
+            }
+        }
+        if (hasPreconditions)
+        {
+            writer.WriteLineNoTabs("");
+        }
+
         writer.WriteLine("// Setup - Perform required setup.");
         Setup(context, writer);
         writer.WriteLineNoTabs("");
