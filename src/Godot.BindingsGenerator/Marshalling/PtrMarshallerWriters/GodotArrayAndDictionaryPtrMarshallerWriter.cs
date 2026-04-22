@@ -144,7 +144,8 @@ internal sealed class GodotArrayAndDictionaryPtrMarshallerWriter : PtrMarshaller
         {
             string escapedParameterName = SourceCodeWriter.EscapeIdentifier(parameterName);
 
-            writer.WriteLine($"if ({escapedParameterName} is not null)");
+            // If the parameter is null, we need to free the native instance we created in 'WriteSetupToUnmanagedCore'.
+            writer.WriteLine($"if ({escapedParameterName} is null)");
             writer.OpenBlock();
             writer.WriteLine($"{escapedParameterName}Native.Dispose();");
             writer.CloseBlock();
