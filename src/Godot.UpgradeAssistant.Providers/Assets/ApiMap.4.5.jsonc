@@ -30,20 +30,6 @@
     "isStatic": true,
     "version": "4.5.0",
   },
-  "Godot.RenderingServer.MethodName.InstanceResetPhysicsInterpolation": {
-    // Removed in https://github.com/godotengine/godot/pull/104269
-    "kind": "field",
-    "state": "Removed",
-    "isStatic": true,
-    "version": "4.5.0",
-  },
-  "Godot.RenderingServer.MethodName.InstanceSetInterpolated": {
-    // Removed in https://github.com/godotengine/godot/pull/104269
-    "kind": "field",
-    "state": "Removed",
-    "isStatic": true,
-    "version": "4.5.0",
-  },
 
   ////////////////////////////////////////////////////////////
   //                       PROPERTIES                       //
@@ -74,32 +60,6 @@
     "value": "Godot.Node.GetNodeRpcConfig",
     "kind": "method",
     "state": "Replaced",
-    "version": "4.5.0",
-  },
-  "Godot.RenderingServer.InstanceResetPhysicsInterpolation": {
-    // Removed in https://github.com/godotengine/godot/pull/104269
-    "kind": "method",
-    "state": "Removed",
-    "isStatic": true,
-    "version": "4.5.0",
-  },
-  "Godot.RenderingServer.InstanceSetInterpolated": {
-    // Removed in https://github.com/godotengine/godot/pull/104269
-    "kind": "method",
-    "state": "Removed",
-    "isStatic": true,
-    "version": "4.5.0",
-  },
-  "Godot.RenderingServerInstance.InstanceResetPhysicsInterpolation": {
-    // Removed in https://github.com/godotengine/godot/pull/104269
-    "kind": "method",
-    "state": "Removed",
-    "version": "4.5.0",
-  },
-  "Godot.RenderingServerInstance.InstanceSetInterpolated": {
-    // Removed in https://github.com/godotengine/godot/pull/104269
-    "kind": "method",
-    "state": "Removed",
     "version": "4.5.0",
   },
 

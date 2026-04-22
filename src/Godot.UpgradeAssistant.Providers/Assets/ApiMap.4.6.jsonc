@@ -1,0 +1,127 @@
+// This file contains the mapping for Godot APIs that changed from Godot 4.5 to 4.6.
+// APIs are sorted by kind and then alphabetically.
+{
+  ////////////////////////////////////////////////////////////
+  //                       NAMESPACES                       //
+  ////////////////////////////////////////////////////////////
+
+  ////////////////////////////////////////////////////////////
+  //                         TYPES                          //
+  ////////////////////////////////////////////////////////////
+
+  "Godot.EditorFileDialog.AccessEnum": {
+    // Replaced in https://github.com/godotengine/godot/pull/111212
+    "value": "Godot.FileDialog.AccessEnum",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.EditorFileDialog.DirSelectedEventHandler": {
+    // Replaced in https://github.com/godotengine/godot/pull/111212
+    "value": "Godot.FileDialog.DirSelectedEventHandler",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.EditorFileDialog.DisplayModeEnum": {
+    // Replaced in https://github.com/godotengine/godot/pull/111212
+    "value": "Godot.FileDialog.DisplayModeEnum",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.EditorFileDialog.FileModeEnum": {
+    // Replaced in https://github.com/godotengine/godot/pull/111212
+    "value": "Godot.FileDialog.FileModeEnum",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.EditorFileDialog.FileNameFilterChangedEventHandler": {
+    // Replaced in https://github.com/godotengine/godot/pull/111212
+    "value": "Godot.FileDialog.FileNameFilterChangedEventHandler",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.EditorFileDialog.FileSelectedEventHandler": {
+    // Replaced in https://github.com/godotengine/godot/pull/111212
+    "value": "Godot.FileDialog.FileSelectedEventHandler",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.EditorFileDialog.FilesSelectedEventHandler": {
+    // Replaced in https://github.com/godotengine/godot/pull/111212
+    "value": "Godot.FileDialog.FilesSelectedEventHandler",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.SpringBoneSimulator3D.BoneDirection": {
+    // Replaced in https://github.com/godotengine/godot/pull/110120
+    "value": "Godot.SkeletonModifier3D.BoneDirection",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.SpringBoneSimulator3D.RotationAxis": {
+    // Replaced in https://github.com/godotengine/godot/pull/110120
+    "value": "Godot.SkeletonModifier3D.RotationAxis",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+  "Godot.StreamPeerTcp.Status": {
+    // Replaced in https://github.com/godotengine/godot/pull/107954
+    "value": "Godot.StreamPeerSocket.Status",
+    "kind": "type",
+    "state": "Replaced",
+    "version": "4.6.0",
+  },
+
+  ////////////////////////////////////////////////////////////
+  //                         FIELDS                         //
+  ////////////////////////////////////////////////////////////
+
+  "Godot.Node.MethodName._GetImportPath": {
+    // Removed in https://github.com/godotengine/godot/pull/111043
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+    "version": "4.6.0",
+  },
+  "Godot.Node.MethodName._SetImportPath": {
+    // Removed in https://github.com/godotengine/godot/pull/111043
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+    "version": "4.6.0",
+  },
+  "Godot.Node.PropertyName._ImportPath": {
+    // Removed in https://github.com/godotengine/godot/pull/111043
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+    "version": "4.6.0",
+  },
+
+  ////////////////////////////////////////////////////////////
+  //                       PROPERTIES                       //
+  ////////////////////////////////////////////////////////////
+
+  "Godot.Node._ImportPath": {
+    // Removed in https://github.com/godotengine/godot/pull/111043
+    "kind": "property",
+    "state": "Removed",
+    "version": "4.6.0",
+  },
+
+  ////////////////////////////////////////////////////////////
+  //                        METHODS                         //
+  ////////////////////////////////////////////////////////////
+
+  ////////////////////////////////////////////////////////////
+  //                        EVENTS                          //
+  ////////////////////////////////////////////////////////////
+}

@@ -15,150 +15,166 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
+  "Godot.AccessibilityServer": {
+    "value": "Godot.AccessibilityServer.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
+  "Godot.AccessibilityServerInstance": {
+    "value": "Godot.AccessibilityServer",
+    "kind": "type",
+    "state": "Replaced",
+  },
   "Godot.AnimationLibrary.AnimationAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationLibrary.AnimationChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationLibrary.AnimationRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationLibrary.AnimationRenamedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationMixer.AnimationFinishedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationMixer.AnimationStartedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationNode.AnimationNodeRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationNode.AnimationNodeRenamedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.AnimationNode.NodeUpdatedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationNodeBlendTree.NodeChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationNodeStateMachinePlayback.StateFinishedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationNodeStateMachinePlayback.StateStartedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationPlayer.AnimationChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AnimationPlayer.CurrentAnimationChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.AreaEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.AreaExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.AreaShapeEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.AreaShapeExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.BodyEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.BodyExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.BodyShapeEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area2D.BodyShapeExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.AreaEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.AreaExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.AreaShapeEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.AreaShapeExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.BodyEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.BodyExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.BodyShapeEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Area3D.BodyShapeExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AssemblyHasScriptsAttribute": {
     "kind": "type",
@@ -173,7 +189,7 @@
   "Godot.AudioServer.BusRenamedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.AudioServerInstance": {
     "value": "Godot.AudioServer",
@@ -183,12 +199,12 @@
   "Godot.AudioServerInstance.BusRenamedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.BaseButton.ToggledEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Bridge.AlcReloadCfg": {
     "kind": "type",
@@ -200,6 +216,16 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_RemovedInternals",
   },
+  "Godot.Bridge.MethodInfo": {
+    "value": "Godot.Bridge.MethodDefinition",
+    "kind": "type",
+    "state": "Replaced",
+  },
+  "Godot.Bridge.PropertyInfo": {
+    "value": "Godot.Bridge.PropertyDefinition",
+    "kind": "type",
+    "state": "Replaced",
+  },
   "Godot.Bridge.ScriptManagerBridge": {
     "kind": "type",
     "state": "Removed",
@@ -208,7 +234,7 @@
   "Godot.ButtonGroup.PressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CameraServer": {
     "value": "Godot.CameraServer.Singleton",
@@ -219,12 +245,12 @@
   "Godot.CameraServer.CameraFeedAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CameraServer.CameraFeedRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CameraServerInstance": {
     "value": "Godot.CameraServer",
@@ -234,12 +260,12 @@
   "Godot.CameraServerInstance.CameraFeedAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CameraServerInstance.CameraFeedRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ClassDB": {
     "value": "Godot.ClassDB.Singleton",
@@ -255,22 +281,22 @@
   "Godot.CodeEdit.BreakpointToggledEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CodeEdit.SymbolHoveredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CodeEdit.SymbolLookupEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CodeEdit.SymbolValidateEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Collections.Array": {
     "value": "Godot.Collections.GodotArray",
@@ -295,42 +321,42 @@
   "Godot.CollisionObject2D.InputEventEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CollisionObject2D.MouseShapeEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CollisionObject2D.MouseShapeExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CollisionObject3D.InputEventEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ColorPicker.ColorChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ColorPicker.PresetAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ColorPicker.PresetRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ColorPickerButton.ColorChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Colors": {
     "value": "Godot.NamedColors",
@@ -340,7 +366,7 @@
   "Godot.Control.GuiInputEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.CSharpScript": {
     "kind": "type",
@@ -357,195 +383,185 @@
     "state": "Replaced",
     "isSingleton": true,
   },
+  "Godot.DisplayServer.OrientationChangedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
   "Godot.DisplayServerInstance": {
     "value": "Godot.DisplayServer",
     "kind": "type",
     "state": "Replaced",
   },
+  "Godot.DisplayServerInstance.OrientationChangedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
   "Godot.EditorDebuggerSession.BreakedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorExportPlatformIos": {
     "value": "Godot.EditorExportPlatformIOS",
     "kind": "type",
     "state": "Replaced",
   },
-  "Godot.EditorFileDialog.DirSelectedEventHandler": {
-    "kind": "type",
-    "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
-  },
-  "Godot.EditorFileDialog.FileNameFilterChangedEventHandler": {
-    "kind": "type",
-    "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
-  },
-  "Godot.EditorFileDialog.FileSelectedEventHandler": {
-    "kind": "type",
-    "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
-  },
-  "Godot.EditorFileDialog.FilesSelectedEventHandler": {
-    "kind": "type",
-    "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
-  },
   "Godot.EditorFileSystem.ResourcesReimportedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorFileSystem.ResourcesReimportingEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorFileSystem.ResourcesReloadEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorFileSystem.SourcesChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorInspector.ObjectIdSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorInspector.PropertyDeletedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorInspector.PropertyEditedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorInspector.PropertyKeyedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorInspector.PropertySelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorInspector.PropertyToggledEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorInspector.ResourceSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorPlugin.MainScreenChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorPlugin.ResourceSavedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorPlugin.SceneChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorPlugin.SceneClosedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorPlugin.SceneSavedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.MultiplePropertiesChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.ObjectIdSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyCanRevertChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyCheckedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyDeletedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyFavoritedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyKeyedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyKeyedWithValueEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.PropertyPinnedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.ResourceSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorProperty.SelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorResourcePicker.ResourceChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorResourcePicker.ResourceSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.EditorResourcePreview.PreviewInvalidatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Engine": {
     "value": "Godot.Engine.Singleton",
@@ -592,67 +608,67 @@
   "Godot.FileDialog.DirSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileDialog.FileNameFilterChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileDialog.FileSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileDialog.FilesSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileSystemDock.FileRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileSystemDock.FilesMovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileSystemDock.FolderMovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileSystemDock.FolderRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileSystemDock.InheritEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileSystemDock.InstantiateEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FileSystemDock.ResourceRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FoldableContainer.FoldingChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.FoldableGroup.ExpandedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GDExtensionManager": {
     "value": "Godot.GDExtensionManager.Singleton",
@@ -663,12 +679,12 @@
   "Godot.GDExtensionManager.ExtensionLoadedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GDExtensionManager.ExtensionUnloadingEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GDExtensionManagerInstance": {
     "value": "Godot.GDExtensionManager",
@@ -678,12 +694,23 @@
   "Godot.GDExtensionManagerInstance.ExtensionLoadedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GDExtensionManagerInstance.ExtensionUnloadingEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.GDScriptLanguageProtocol": {
+    "value": "Godot.GDScriptLanguageProtocol.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
+  "Godot.GDScriptLanguageProtocolInstance": {
+    "value": "Godot.GDScriptLanguageProtocol",
+    "kind": "type",
+    "state": "Replaced",
   },
   "Godot.Geometry2D": {
     "value": "Godot.Geometry2D.Singleton",
@@ -728,92 +755,92 @@
   "Godot.GraphEdit.ConnectionDragStartedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.ConnectionFromEmptyEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.ConnectionRequestEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.ConnectionToEmptyEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.DeleteNodesRequestEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.DisconnectionRequestEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.FrameRectChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.GraphElementsLinkedToFrameRequestEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.NodeDeselectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.NodeSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.PopupRequestEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphEdit.ScrollOffsetChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphElement.DraggedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphElement.ResizeEndEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphElement.ResizeRequestEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GraphNode.SlotUpdatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.GridMap.CellSizeChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.HttpRequest.RequestCompletedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.IAwaitable": {
     "kind": "type",
@@ -844,7 +871,7 @@
   "Godot.Input.JoyConnectionChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.InputInstance": {
     "value": "Godot.Input",
@@ -854,7 +881,7 @@
   "Godot.InputInstance.JoyConnectionChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.InputMap": {
     "value": "Godot.InputMap.Singleton",
@@ -881,27 +908,27 @@
   "Godot.ItemList.EmptyClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ItemList.ItemActivatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ItemList.ItemClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ItemList.ItemSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ItemList.MultiSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.JavaClassWrapper": {
     "value": "Godot.JavaClassWrapper.Singleton",
@@ -928,27 +955,27 @@
   "Godot.LineEdit.EditingToggledEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.LineEdit.TextChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.LineEdit.TextChangeRejectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.LineEdit.TextSubmittedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.MainLoop.OnRequestPermissionsResultEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Marshalls": {
     "value": "Godot.Marshalls.Singleton",
@@ -964,37 +991,37 @@
   "Godot.MultiplayerApi.PeerConnectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.MultiplayerApi.PeerDisconnectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.MultiplayerPeer.PeerConnectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.MultiplayerPeer.PeerDisconnectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.MultiplayerSpawner.DespawnedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.MultiplayerSpawner.SpawnedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.MultiplayerSynchronizer.VisibilityChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NativeInterop.CustomUnsafe": {
     "kind": "type",
@@ -1165,32 +1192,32 @@
   "Godot.NavigationAgent2D.LinkReachedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationAgent2D.VelocityComputedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationAgent2D.WaypointReachedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationAgent3D.LinkReachedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationAgent3D.VelocityComputedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationAgent3D.WaypointReachedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationMeshGenerator": {
     "value": "Godot.NavigationMeshGenerator.Singleton",
@@ -1222,7 +1249,7 @@
   "Godot.NavigationServer2D.MapChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationServer2DInstance": {
     "value": "Godot.NavigationServer2D",
@@ -1232,7 +1259,18 @@
   "Godot.NavigationServer2DInstance.MapChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.NavigationServer2DManager": {
+    "value": "Godot.NavigationServer2DManager.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
+  "Godot.NavigationServer2DManagerInstance": {
+    "value": "Godot.NavigationServer2DManager",
+    "kind": "type",
+    "state": "Replaced",
   },
   "Godot.NavigationServer3D": {
     "value": "Godot.NavigationServer3D.Singleton",
@@ -1243,7 +1281,7 @@
   "Godot.NavigationServer3D.MapChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.NavigationServer3DInstance": {
     "value": "Godot.NavigationServer3D",
@@ -1253,52 +1291,68 @@
   "Godot.NavigationServer3DInstance.MapChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.NavigationServer3DManager": {
+    "value": "Godot.NavigationServer3DManager.Singleton",
+    "kind": "type",
+    "state": "Replaced",
+    "isSingleton": true,
+  },
+  "Godot.NavigationServer3DManagerInstance": {
+    "value": "Godot.NavigationServer3DManager",
+    "kind": "type",
+    "state": "Replaced",
   },
   "Godot.Node.ChildEnteredTreeEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Node.ChildExitingTreeEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Node.EditorDescriptionChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Node.ReplacingByEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRBindingModifierEditor.BindingModifierRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRFutureResult.CompletedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRInterface.CpuLevelChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRInterface.GpuLevelChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRInterface.RefreshRateChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.OpenXRInterface.UserPresenceChangedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXripBindingModifier": {
     "value": "Godot.OpenXRIPBindingModifier",
@@ -1308,37 +1362,47 @@
   "Godot.OpenXRRenderModelExtension.RenderModelAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRRenderModelExtension.RenderModelRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRRenderModelExtension.RenderModelTopLevelPathChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRRenderModelManager.RenderModelAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OpenXRRenderModelManager.RenderModelRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.OpenXRSpatialEntityExtension.SpatialDiscoveryRecommendedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.OpenXRSpatialEntityTracker.SpatialTrackingStateChangedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OptionButton.ItemFocusedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OptionButton.ItemSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.OS": {
     "value": "Godot.OS.Singleton",
@@ -1409,17 +1473,17 @@
   "Godot.PopupMenu.IdFocusedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.PopupMenu.IdPressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.PopupMenu.IndexPressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ProjectSettings": {
     "value": "Godot.ProjectSettings.Singleton",
@@ -1435,7 +1499,7 @@
   "Godot.Range.ValueChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RenderingServer": {
     "value": "Godot.RenderingServer.Singleton",
@@ -1489,142 +1553,142 @@
   "Godot.RichTextLabel.MetaClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RichTextLabel.MetaHoverEndedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RichTextLabel.MetaHoverStartedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody2D.BodyEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody2D.BodyExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody2D.BodyShapeEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody2D.BodyShapeExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody3D.BodyEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody3D.BodyExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody3D.BodyShapeEnteredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.RigidBody3D.BodyShapeExitedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SceneMultiplayer.PeerAuthenticatingEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SceneMultiplayer.PeerAuthenticationFailedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SceneMultiplayer.PeerPacketEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SceneTree.NodeAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SceneTree.NodeConfigurationWarningChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SceneTree.NodeRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SceneTree.NodeRenamedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptCreateDialog.ScriptCreatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditor.EditorScriptChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditor.ScriptCloseEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditorBase.GoToHelpEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditorBase.GoToMethodEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditorBase.ReplaceInFilesRequestedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditorBase.RequestHelpEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditorBase.RequestOpenScriptAtLineEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditorBase.RequestSavePreviousStateEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptEditorBase.SearchInFilesRequestedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ScriptPathAttribute": {
     "kind": "type",
@@ -1633,102 +1697,102 @@
   "Godot.Skeleton3D.BoneEnabledChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Slider.DragEndedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.SplitContainer.DraggedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.StatusIndicator.PressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.ActiveTabRearrangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.TabButtonPressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.TabChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.TabClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.TabClosePressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.TabHoveredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.TabRmbClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabBar.TabSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabContainer.ActiveTabRearrangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabContainer.TabButtonPressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabContainer.TabChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabContainer.TabClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabContainer.TabHoveredEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TabContainer.TabSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TextEdit.GutterClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TextEdit.LinesEditedFromEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TextServerManager": {
     "value": "Godot.TextServerManager.Singleton",
@@ -1739,12 +1803,12 @@
   "Godot.TextServerManager.InterfaceAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TextServerManager.InterfaceRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TextServerManagerInstance": {
     "value": "Godot.TextServerManager",
@@ -1754,12 +1818,12 @@
   "Godot.TextServerManagerInstance.InterfaceAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.TextServerManagerInstance.InterfaceRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.ThemeDB": {
     "value": "Godot.ThemeDB.Singleton",
@@ -1797,57 +1861,57 @@
   "Godot.Tree.ButtonClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.CheckPropagatedToItemEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.ColumnTitleClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.CustomItemClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.CustomPopupEditedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.EmptyClickedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.ItemCollapsedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.ItemMouseSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tree.MultiSelectedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tween.LoopFinishedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Tween.StepFinishedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Variant.Operator": {
     "value": "Godot.VariantOperator",
@@ -1862,72 +1926,92 @@
   "Godot.Viewport.GuiFocusChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.VirtualJoystick.FlickedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.VirtualJoystick.ReleasedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebRtcPeerConnection.DataChannelReceivedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebRtcPeerConnection.IceCandidateCreatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebRtcPeerConnection.SessionDescriptionCreatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SelectendEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SelectEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SelectstartEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SessionFailedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SessionSupportedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SqueezeendEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SqueezeEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WebXRInterface.SqueezestartEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Window.FilesDroppedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.Window.NonclientWindowInputEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
+  },
+  "Godot.Window.OutputMaxLinearValueChangedEventHandler": {
+    "kind": "type",
+    "state": "Removed",
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.Window.WindowInputEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.WorkerThreadPool": {
     "value": "Godot.WorkerThreadPool.Singleton",
@@ -1943,72 +2027,72 @@
   "Godot.XRController3D.ButtonPressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRController3D.ButtonReleasedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRController3D.InputFloatChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRController3D.InputVector2ChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRController3D.ProfileChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRInterface.PlayAreaChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRNode3D.TrackingChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRPositionalTracker.ButtonPressedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRPositionalTracker.ButtonReleasedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRPositionalTracker.InputFloatChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRPositionalTracker.InputVector2ChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRPositionalTracker.PoseChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRPositionalTracker.PoseLostTrackingEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRPositionalTracker.ProfileChangedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServer": {
     "value": "Godot.XRServer.Singleton",
@@ -2019,27 +2103,27 @@
   "Godot.XRServer.InterfaceAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServer.InterfaceRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServer.TrackerAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServer.TrackerRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServer.TrackerUpdatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServerInstance": {
     "value": "Godot.XRServer",
@@ -2049,27 +2133,27 @@
   "Godot.XRServerInstance.InterfaceAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServerInstance.InterfaceRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServerInstance.TrackerAddedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServerInstance.TrackerRemovedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
   "Godot.XRServerInstance.TrackerUpdatedEventHandler": {
     "kind": "type",
     "state": "Removed",
-    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved"
+    "messageId": "ApiMapMessage_SignalDelegateTypesRemoved",
   },
 
   ////////////////////////////////////////////////////////////
@@ -2195,6 +2279,18 @@
     "state": "Removed",
     "isStatic": true,
     "messageId": "ApiMapMessage_EnumMaxRemoved",
+  },
+  "Godot.AudioEffectSpectrumAnalyzer.MethodName.GetTapBackPos": {
+    // Removed in https://github.com/godotengine/godot/pull/114355
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+  },
+  "Godot.AudioEffectSpectrumAnalyzer.MethodName.SetTapBackPos": {
+    // Removed in https://github.com/godotengine/godot/pull/114355
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
   },
   "Godot.AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.Max": {
     "kind": "field",
@@ -2521,6 +2617,12 @@
     "isStatic": true,
     "messageId": "ApiMapMessage_RemovedInternals",
   },
+  "Godot.EditorDock.DockSlot.Max": {
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+    "messageId": "ApiMapMessage_EnumMaxRemoved",
+  },
   "Godot.EditorExportPlatform.MethodName.GetOsName": {
     "value": "Godot.EditorExportPlatform.MethodName.GetOSName",
     "kind": "field",
@@ -2599,6 +2701,72 @@
     "isStatic": true,
     "messageId": "ApiMapMessage_EnumMaxRemoved",
   },
+  "Godot.GD.Int16Max": {
+    "value": "System.Int16.MaxValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Int16Min": {
+    "value": "System.Int16.MinValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Int32Max": {
+    "value": "System.Int32.MaxValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Int32Min": {
+    "value": "System.Int32.MinValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Int64Max": {
+    "value": "System.Int64.MaxValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Int64Min": {
+    "value": "System.Int64.MinValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Int8Max": {
+    "value": "System.SByte.MaxValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Int8Min": {
+    "value": "System.SByte.MinValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Uint16Max": {
+    "value": "System.UInt16.MaxValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Uint32Max": {
+    "value": "System.UInt32.MaxValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GD.Uint8Max": {
+    "value": "System.Byte.MaxValue",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
   "Godot.GDExtension.MethodName.CloseLibrary": {
     // Removed in https://github.com/godotengine/godot/pull/88418
     "kind": "field",
@@ -2619,6 +2787,90 @@
     "state": "Removed",
     "isStatic": true,
     "documentationUrl": "https://github.com/godotengine/godot/pull/88418",
+  },
+  "Godot.GDScriptTextDocument.MethodName.CodeLens": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Codelens",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.ColorPresentation": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Colorpresentation",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.DidChange": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Didchange",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.DidClose": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Didclose",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.DidOpen": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Didopen",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.DidSave": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Didsave",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.DocumentLink": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Documentlink",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.DocumentSymbol": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Documentsymbol",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.FoldingRange": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Foldingrange",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.NativeSymbol": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Nativesymbol",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.PrepareRename": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Preparerename",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.SignatureHelp": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Signaturehelp",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptTextDocument.MethodName.WillSaveWaitUntil": {
+    "value": "Godot.GDScriptTextDocument.MethodName.Willsavewaituntil",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GDScriptWorkspace.MethodName.DidDeleteFiles": {
+    "value": "Godot.GDScriptWorkspace.MethodName.Diddeletefiles",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
   },
   "Godot.Generic6DofJoint3D.Flag.Max": {
     "kind": "field",
@@ -2657,6 +2909,24 @@
     "value": "Godot.GltfAccessor.PropertyName.AccessorType",
     "kind": "field",
     "state": "Replaced",
+    "isStatic": true,
+  },
+  "Godot.GltfState.MethodName.GetDiscardMeshesAndMaterials": {
+    // Removed in https://github.com/godotengine/godot/pull/113172
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+  },
+  "Godot.GltfState.MethodName.GetExtractPath": {
+    // Removed in https://github.com/godotengine/godot/pull/113172
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+  },
+  "Godot.GltfState.MethodName.GetExtractPrefix": {
+    // Removed in https://github.com/godotengine/godot/pull/113172
+    "kind": "field",
+    "state": "Removed",
     "isStatic": true,
   },
   "Godot.GodotObject.MethodName._Get": {
@@ -3139,18 +3409,6 @@
     "isStatic": true,
     "messageId": "ApiMapMessage_EnumMaxRemoved",
   },
-  "Godot.Node.MethodName._GetImportPath": {
-    "kind": "field",
-    "state": "Removed",
-    "isStatic": true,
-    "messageId": "ApiMapMessage_RemovedInternals",
-  },
-  "Godot.Node.MethodName._SetImportPath": {
-    "kind": "field",
-    "state": "Removed",
-    "isStatic": true,
-    "messageId": "ApiMapMessage_RemovedInternals",
-  },
   "Godot.Node.NotificationOsImeUpdate": {
     "value": "Godot.Node.NotificationOSImeUpdate",
     "kind": "field",
@@ -3181,11 +3439,11 @@
     "state": "Replaced",
     "isStatic": true,
   },
-  "Godot.Node.PropertyName._ImportPath": {
+  "Godot.OpenXRApiExtension.MethodName.GetOpenxrVersion": {
+    "value": "Godot.OpenXRApiExtension.MethodName.GetOpenXRVersion",
     "kind": "field",
-    "state": "Removed",
+    "state": "Replaced",
     "isStatic": true,
-    "messageId": "ApiMapMessage_RemovedInternals",
   },
   "Godot.OpenXRApiExtension.MethodName.OpenxrIsEnabled": {
     "value": "Godot.OpenXRApiExtension.MethodName.OpenXRIsEnabled",
@@ -3284,6 +3542,12 @@
     "messageId": "ApiMapMessage_EnumMaxRemoved",
   },
   "Godot.OpenXRInterface.HandTrackedSource.Max": {
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+    "messageId": "ApiMapMessage_EnumMaxRemoved",
+  },
+  "Godot.OpenXRSpatialComponentMarkerList.MarkerType.Max": {
     "kind": "field",
     "state": "Removed",
     "isStatic": true,
@@ -3731,6 +3995,18 @@
     "state": "Replaced",
     "isStatic": true,
   },
+  "Godot.RenderingServer.MethodName.InstanceResetPhysicsInterpolation": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+  },
+  "Godot.RenderingServer.MethodName.InstanceSetInterpolated": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+  },
   "Godot.RenderingServer.ParticlesCollisionHeightfieldResolution.Max": {
     "kind": "field",
     "state": "Removed",
@@ -3845,6 +4121,18 @@
     "state": "Replaced",
     "isStatic": true,
   },
+  "Godot.RenderingServerInstance.MethodName.InstanceResetPhysicsInterpolation": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+  },
+  "Godot.RenderingServerInstance.MethodName.InstanceSetInterpolated": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "field",
+    "state": "Removed",
+    "isStatic": true,
+  },
   "Godot.ResourcePreloader.MethodName._GetResources": {
     "kind": "field",
     "state": "Removed",
@@ -3892,6 +4180,12 @@
     "state": "Removed",
     "isStatic": true,
     "messageId": "ApiMapMessage_EnumMaxRemoved",
+  },
+  "Godot.SpriteFrames.LoopMode.Pingpong": {
+    "value": "Godot.SpriteFrames.LoopMode.PingPong",
+    "kind": "field",
+    "state": "Replaced",
+    "isStatic": true,
   },
   "Godot.SpriteFrames.MethodName._GetAnimations": {
     "kind": "field",
@@ -4748,11 +5042,6 @@
     "state": "Removed",
     "messageId": "ApiMapMessage_RemovedInternals",
   },
-  "Godot.Node._ImportPath": {
-    "kind": "property",
-    "state": "Removed",
-    "messageId": "ApiMapMessage_RemovedInternals",
-  },
   "Godot.PackedDataContainer.__Data___": {
     "kind": "property",
     "state": "Removed",
@@ -4849,6 +5138,16 @@
   //                        METHODS                         //
   ////////////////////////////////////////////////////////////
 
+  "Godot.AudioEffectSpectrumAnalyzer.GetTapBackPos": {
+    // Removed in https://github.com/godotengine/godot/pull/114355
+    "kind": "method",
+    "state": "Removed",
+  },
+  "Godot.AudioEffectSpectrumAnalyzer.SetTapBackPos": {
+    // Removed in https://github.com/godotengine/godot/pull/114355
+    "kind": "method",
+    "state": "Removed",
+  },
   "Godot.BoneAttachment3D.OnBonePoseUpdate": {
     "value": "Godot.BoneAttachment3D.OnSkeletonUpdate",
     "kind": "method",
@@ -4935,6 +5234,76 @@
     "state": "Removed",
     "documentationUrl": "https://github.com/godotengine/godot/pull/88418",
   },
+  "Godot.GDScriptTextDocument.CodeLens": {
+    "value": "Godot.GDScriptTextDocument.Codelens",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.ColorPresentation": {
+    "value": "Godot.GDScriptTextDocument.Colorpresentation",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.DidChange": {
+    "value": "Godot.GDScriptTextDocument.Didchange",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.DidClose": {
+    "value": "Godot.GDScriptTextDocument.Didclose",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.DidOpen": {
+    "value": "Godot.GDScriptTextDocument.Didopen",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.DidSave": {
+    "value": "Godot.GDScriptTextDocument.Didsave",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.DocumentLink": {
+    "value": "Godot.GDScriptTextDocument.Documentlink",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.DocumentSymbol": {
+    "value": "Godot.GDScriptTextDocument.Documentsymbol",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.FoldingRange": {
+    "value": "Godot.GDScriptTextDocument.Foldingrange",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.NativeSymbol": {
+    "value": "Godot.GDScriptTextDocument.Nativesymbol",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.PrepareRename": {
+    "value": "Godot.GDScriptTextDocument.Preparerename",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.SignatureHelp": {
+    "value": "Godot.GDScriptTextDocument.Signaturehelp",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptTextDocument.WillSaveWaitUntil": {
+    "value": "Godot.GDScriptTextDocument.Willsavewaituntil",
+    "kind": "method",
+    "state": "Replaced",
+  },
+  "Godot.GDScriptWorkspace.DidDeleteFiles": {
+    "value": "Godot.GDScriptWorkspace.Diddeletefiles",
+    "kind": "method",
+    "state": "Replaced",
+  },
   "Godot.GltfAccessor.GetType": {
     // Replaced in https://github.com/godotengine/godot/pull/93920
     "value": "Godot.GltfAccessor.GetAccessorType",
@@ -4946,6 +5315,21 @@
     "value": "Godot.GltfAccessor.SetAccessorType",
     "kind": "method",
     "state": "Replaced",
+  },
+  "Godot.GltfState.GetDiscardMeshesAndMaterials": {
+    // Removed in https://github.com/godotengine/godot/pull/113172
+    "kind": "method",
+    "state": "Removed",
+  },
+  "Godot.GltfState.GetExtractPath": {
+    // Removed in https://github.com/godotengine/godot/pull/113172
+    "kind": "method",
+    "state": "Removed",
+  },
+  "Godot.GltfState.GetExtractPrefix": {
+    // Removed in https://github.com/godotengine/godot/pull/113172
+    "kind": "method",
+    "state": "Removed",
   },
   "Godot.GodotObject.GetGodotClassPropertyValue": {
     "kind": "method",
@@ -5037,6 +5421,11 @@
     "kind": "method",
     "state": "Replaced",
   },
+  "Godot.OpenXRApiExtension.GetOpenxrVersion": {
+    "value": "Godot.OpenXRApiExtension.GetOpenXRVersion",
+    "kind": "method",
+    "state": "Replaced",
+  },
   "Godot.OpenXRApiExtension.OpenxrIsEnabled": {
     "value": "Godot.OpenXRApiExtension.OpenXRIsEnabled",
     "kind": "method",
@@ -5099,10 +5488,32 @@
     "isStatic": true,
     "isSingleton": true,
   },
+  "Godot.RenderingServer.InstanceResetPhysicsInterpolation": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "method",
+    "state": "Removed",
+    "isStatic": true,
+  },
+  "Godot.RenderingServer.InstanceSetInterpolated": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "method",
+    "state": "Removed",
+    "isStatic": true,
+  },
   "Godot.RenderingServerInstance.HasOsFeature": {
     "value": "Godot.RenderingServer.HasOSFeature",
     "kind": "method",
     "state": "Replaced",
+  },
+  "Godot.RenderingServerInstance.InstanceResetPhysicsInterpolation": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "method",
+    "state": "Removed",
+  },
+  "Godot.RenderingServerInstance.InstanceSetInterpolated": {
+    // Removed in https://github.com/godotengine/godot/pull/104269
+    "kind": "method",
+    "state": "Removed",
   },
   "Godot.TileMap.GetQuadrantSize": {
     // Renamed in https://github.com/godotengine/godot/pull/81070
