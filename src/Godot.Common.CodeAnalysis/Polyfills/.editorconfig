@@ -1,0 +1,9 @@
+[*.cs]
+
+# These polyfill files are kept in sync with minimal changes, so they often won't follow the same code style
+# as the rest of the project. To avoid diagnostics about that, we explicitly disable the rules we're
+# comfortable ignoring for these files. If any future changes introduce new diagnostics, we can evaluate whether
+# to disable those as well.
+
+# IDE0161: Convert to file-scoped namespace
+dotnet_diagnostic.IDE0161.severity = none
