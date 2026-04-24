@@ -169,6 +169,7 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                     ReturnParameter = ReturnInfo.FromType(type),
                     Body = MethodBody.CreateUnsafe(writer =>
                     {
+                        writer.WriteLineNoTabs("#nullable enable");
                         writer.WriteLine("if (_singleton is null)");
                         writer.OpenBlock();
                         writer.WriteLine($"using global::Godot.NativeInterop.NativeGodotStringName nameNative = global::Godot.NativeInterop.NativeGodotStringName.Create(\"{singleton.Name}\"u8);");
@@ -176,6 +177,7 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                         writer.WriteLine($"_singleton = ({type.FullNameWithGlobal})global::Godot.NativeInterop.Marshallers.GodotObjectMarshaller.GetOrCreateManagedInstance(singletonPtr);");
                         writer.CloseBlock();
                         writer.WriteLine($"return _singleton;");
+                        writer.WriteLineNoTabs("#nullable disable");
                     }),
                 },
             };
