@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Threading;
 using System.Threading.Tasks;
 using Godot.UpgradeAssistant.Cli.Services;
@@ -20,7 +21,7 @@ internal sealed class UpgradeCommand : AssistantCommandBase
             DotNetProjectFilePath = options.DotNetProject.FullName,
             TargetGodotVersion = options.TargetGodotVersion,
             EnableGodotDotNetPreview = options.EnableGodotDotNetPreview,
-            ExportFilePath = options.ExportFilePath?.FullName,
+            ExportEntries = options.GetExportEntries(),
         }, cancellationToken);
     }
 }

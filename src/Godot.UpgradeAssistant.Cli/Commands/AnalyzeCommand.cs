@@ -20,7 +20,7 @@ internal sealed class AnalyzeCommand : AssistantCommandBase
             DotNetProjectFilePath = options.DotNetProject.FullName,
             TargetGodotVersion = options.TargetGodotVersion,
             EnableGodotDotNetPreview = options.EnableGodotDotNetPreview,
-            ExportFilePath = options.ExportFilePath?.FullName,
+            ExportEntries = options.GetExportEntries(),
             IsDryRun = true,
         }, cancellationToken);
     }

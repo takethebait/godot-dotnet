@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace Godot.UpgradeAssistant.Cli.Services;
 
 internal sealed class UpgradeServiceConfiguration
@@ -29,15 +31,11 @@ internal sealed class UpgradeServiceConfiguration
     public bool EnableGodotDotNetPreview { get; init; }
 
     /// <summary>
-    /// Exporter that will write the results summary.
+    /// Export configuration for the upgrade assistant results.
+    /// Each entry contains the exporter that will write the results and the path that the file will be written to.
+    /// If the path is null or empty, the export step will be skipped for that entry.
     /// </summary>
-    public IExporter? Exporter { get; init; }
-
-    /// <summary>
-    /// The path to the exported results summary.
-    /// If <see langword="null"/> the export step is skipped.
-    /// </summary>
-    public string? ExportFilePath { get; init; }
+    public ImmutableArray<ExportEntry> ExportEntries { get; init; } = [];
 
     /// <summary>
     /// When enabled only an analysis is performed, skipping the upgrade step.

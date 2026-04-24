@@ -84,7 +84,13 @@ internal abstract class AssistantCommandBase : Command
         Description = SR.AssistantCommandBase_OptionVerboseDescription,
     };
 
-    private static readonly Option<FileInfo?> _exportFilePathOption = new(
+    private static readonly Option<FileInfo?> _resultsOutputFilePathOption = new(
+        name: "--results-json")
+    {
+        Description = SR.AssistantCommandBase_OptionResultsJsonDescription,
+    };
+
+    private static readonly Option<FileInfo?> _summaryOutputFilePathOption = new(
         name: "--output", aliases: ["-o"])
     {
         Description = SR.AssistantCommandBase_OptionOutputDescription,
@@ -107,7 +113,8 @@ internal abstract class AssistantCommandBase : Command
         Options.Add(_targetGodotVersionOption);
         Options.Add(_enableGodotDotNetPreviewOption);
         Options.Add(_verboseOption);
-        Options.Add(_exportFilePathOption);
+        Options.Add(_resultsOutputFilePathOption);
+        Options.Add(_summaryOutputFilePathOption);
         Options.Add(_noSummaryOption);
 
         SetAction(HandleCommand);
@@ -120,13 +127,14 @@ internal abstract class AssistantCommandBase : Command
         var dotnetProject = parseResult.GetValue(_dotnetProjectOption)!;
         var targetGodotVersion = parseResult.GetValue(_targetGodotVersionOption);
         bool enableGodotDotNetPreview = parseResult.GetValue(_enableGodotDotNetPreviewOption);
-        var exportFilePath = parseResult.GetValue(_exportFilePathOption);
+        var resultsOutputFilePath = parseResult.GetValue(_resultsOutputFilePathOption);
+        var summaryOutputFilePath = parseResult.GetValue(_summaryOutputFilePathOption);
 
         IsVerbose = parseResult.GetValue(_verboseOption);
 
         if (parseResult.GetValue(_noSummaryOption))
         {
-            exportFilePath = null;
+            summaryOutputFilePath = null;
         }
 
         if (targetGodotVersion > Constants.LastSupportedGodotSharpVersion)
@@ -143,7 +151,8 @@ internal abstract class AssistantCommandBase : Command
             DotNetProject = dotnetProject,
             TargetGodotVersion = targetGodotVersion,
             EnableGodotDotNetPreview = enableGodotDotNetPreview,
-            ExportFilePath = exportFilePath,
+            ResultsJsonFilePath = resultsOutputFilePath,
+            SummaryFilePath = summaryOutputFilePath,
         };
     }
 

@@ -145,6 +145,9 @@
   <data name="AssistantCommandBase_OptionOutputDescription" xml:space="preserve">
     <value>The path to the file that the results summary will be exported to. The name may include '{TimeStamp}' which will be replaced with the timestamp at the time of executing the assistant and '{TargetGodotVersion}' which will be replaced with the target Godot version that the assistant tried to upgrade to.</value>
   </data>
+  <data name="AssistantCommandBase_OptionResultsJsonDescription" xml:space="preserve">
+    <value>The path to the file that the results JSON will be exported to. The name may include '{TimeStamp}' which will be replaced with the timestamp at the time of executing the assistant and '{TargetGodotVersion}' which will be replaced with the target Godot version that the assistant tried to upgrade to.</value>
+  </data>
   <data name="AssistantCommandBase_OptionTargetGodotVersionDescription" xml:space="preserve">
     <value>Version of Godot to upgrade the project to.</value>
   </data>

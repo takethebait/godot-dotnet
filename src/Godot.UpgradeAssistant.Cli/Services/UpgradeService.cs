@@ -143,29 +143,32 @@ internal sealed class UpgradeService
 
     export:
         // Export step.
-        if (configuration.ExportFilePath is not null)
+        foreach (var exportEntry in configuration.ExportEntries)
         {
-            string outputPath = configuration.ExportFilePath
-                .Replace("{TimeStamp}", timeStamp.ToString("yyyyMMdd-HHmmss", CultureInfo.InvariantCulture))
-                .Replace("{TargetGodotVersion}", configuration.TargetGodotVersion.ToString());
-
-            Log.Verbose(SR.Log_ExportStepStarting);
-
-            var step = new ExportStep(new()
+            if (exportEntry.ExportFilePath is not null)
             {
-                Workspace = workspace,
-                TargetGodotVersion = configuration.TargetGodotVersion,
-                EnableGodotDotNetPreview = configuration.EnableGodotDotNetPreview,
-                Exporter = configuration.Exporter ?? new HtmlExporter(),
-                OutputPath = outputPath,
-                TimeStamp = timeStamp,
-                AnalysisResults = analysisResults,
-                UpgradeFixes = upgradeFixes,
-                AppliedUpgradeFixes = appliedFixes,
-            });
-            await step.RunAsync(cancellationToken);
+                string outputPath = exportEntry.ExportFilePath
+                    .Replace("{TimeStamp}", timeStamp.ToString("yyyyMMdd-HHmmss", CultureInfo.InvariantCulture))
+                    .Replace("{TargetGodotVersion}", configuration.TargetGodotVersion.ToString());
 
-            Log.Verbose(SR.FormatLog_ExportStepSummaryExportedToFilePath(outputPath));
+                Log.Verbose(SR.Log_ExportStepStarting);
+
+                var step = new ExportStep(new()
+                {
+                    Workspace = workspace,
+                    TargetGodotVersion = configuration.TargetGodotVersion,
+                    EnableGodotDotNetPreview = configuration.EnableGodotDotNetPreview,
+                    Exporter = exportEntry.Exporter,
+                    OutputPath = outputPath,
+                    TimeStamp = timeStamp,
+                    AnalysisResults = analysisResults,
+                    UpgradeFixes = upgradeFixes,
+                    AppliedUpgradeFixes = appliedFixes,
+                });
+                await step.RunAsync(cancellationToken);
+
+                Log.Verbose(SR.FormatLog_ExportStepSummaryExportedToFilePath(outputPath));
+            }
         }
     }
 
