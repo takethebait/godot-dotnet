@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using System.IO;
 using Godot.BindingsGenerator.Logging;
 using Godot.BindingsGenerator.ApiDump;
@@ -40,33 +42,59 @@ public class GenerateTask : Task
     /// <returns><see langword="true"/> if the task was successful.</returns>
     public override bool Execute()
     {
-        // Clean output directories first.
-        if (Directory.Exists(OutputPath))
+        Trace.Listeners.Clear();
+        Trace.Listeners.Add(new ThrowingAssertionListener());
+
+        try
         {
-            Directory.Delete(OutputPath, recursive: true);
+            // Clean output directories first.
+            if (Directory.Exists(OutputPath))
+            {
+                Directory.Delete(OutputPath, recursive: true);
+            }
+            if (Directory.Exists(TestOutputPath))
+            {
+                Directory.Delete(TestOutputPath, recursive: true);
+            }
+
+            var logger = new MSBuildTaskLogger(Log);
+
+            ClangGenerator.Generate(ExtensionInterfacePath, OutputPath, TestOutputPath, logger);
+
+            var api = LoadExtensionApi(ExtensionApiPath);
+            if (api is null || string.IsNullOrWhiteSpace(api.Header.VersionFullName))
+            {
+                Log.LogError("Error parsing the Godot extension API dump.");
+                return false;
+            }
+
+            Log.LogMessage(MessageImportance.High, $"Generating C# bindings for '{api.Header.VersionFullName}'.");
+
+            BindingsGenerator.Generate(api, OutputPath, TestOutputPath, logger: logger);
+
+            return !Log.HasLoggedErrors;
         }
-        if (Directory.Exists(TestOutputPath))
+        catch (Exception e)
         {
-            Directory.Delete(TestOutputPath, recursive: true);
-        }
-
-        var logger = new MSBuildTaskLogger(Log);
-
-        ClangGenerator.Generate(ExtensionInterfacePath, OutputPath, TestOutputPath, logger);
-
-        using var stream = File.OpenRead(ExtensionApiPath);
-        var api = GodotApi.Deserialize(stream);
-
-        if (api is null || string.IsNullOrWhiteSpace(api.Header.VersionFullName))
-        {
-            Log.LogError("Error parsing the Godot extension API dump.");
+            Log.LogErrorFromException(e, showStackTrace: true);
             return false;
         }
+    }
 
-        Log.LogMessage(MessageImportance.High, $"Generating C# bindings for '{api.Header.VersionFullName}'.");
+    private static GodotApi? LoadExtensionApi(string path)
+    {
+        using var stream = File.OpenRead(path);
+        return GodotApi.Deserialize(stream);
+    }
 
-        BindingsGenerator.Generate(api, OutputPath, TestOutputPath, logger: logger);
+    private sealed class ThrowingAssertionListener : TraceListener
+    {
+        public override void Write(string? message) { }
+        public override void WriteLine(string? message) { }
 
-        return !Log.HasLoggedErrors;
+        public override void Fail(string? message, string? detailMessage)
+        {
+            throw new InvalidOperationException($"Assertion failed: {message} {detailMessage}");
+        }
     }
 }
