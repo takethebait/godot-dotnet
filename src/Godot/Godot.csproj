@@ -25,10 +25,19 @@
     </ItemGroup>
   </Target>
 
+  <!-- Include all *.props and *.targets files from the project directory into the NuGet package root. -->
+  <ItemGroup Condition="'$(EnableDefaultItems)' != 'false'">
+    <None Condition="'$(EnableDefaultNoneItems)' != 'false'"
+          Include="**/*.props;**/*.targets"
+          Pack="true"
+          PackagePath="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Godot.Bindings\Godot.Bindings.csproj" />
     <ProjectReference Include="..\Godot.Analyzers\Godot.Analyzers.csproj" />
     <ProjectReference Include="..\Godot.SourceGeneration\Godot.SourceGeneration.csproj" />
+    <ProjectReference Include="..\Godot.Tasks\Godot.Tasks.csproj" />
   </ItemGroup>
 
 </Project>

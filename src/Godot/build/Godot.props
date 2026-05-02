@@ -1,0 +1,17 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- GeneratePathProperty properties are not available at this point, so we'll define it manually. -->
+    <!--
+      This assumes the version of Godot.Tasks matches the version of the Godot metapackage.
+      It also makes assumptions about the NuGet package location and relies on $(NuGetPackageRoot)
+      which is not an official solution. See https://github.com/dotnet/roslyn/issues/37882.
+    -->
+    <_PackageVersion>$([System.IO.Path]::GetFileName($([System.IO.Path]::GetDirectoryName($([System.String]::Copy('$(MSBuildThisFileDirectory)').TrimEnd('/'))))))</_PackageVersion>
+    <PkgGodot_Tasks>$(NuGetPackageRoot)godot.tasks\$(_PackageVersion)</PkgGodot_Tasks>
+  </PropertyGroup>
+
+  <!-- Re-export Godot.Tasks build properties for projects that directly reference the Godot metapackage. -->
+  <Import Project="$(PkgGodot_Tasks)\build\Godot.Tasks.props" Condition="'$(PkgGodot_Tasks)' != '' and Exists('$(PkgGodot_Tasks)\build\Godot.Tasks.props')" />
+
+</Project>

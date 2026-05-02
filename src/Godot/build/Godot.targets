@@ -1,0 +1,6 @@
+<Project>
+
+  <!-- Re-export Godot.Tasks build targets for projects that directly reference the Godot metapackage. -->
+  <Import Project="$(PkgGodot_Tasks)\build\Godot.Tasks.targets" Condition="'$(PkgGodot_Tasks)' != '' and Exists('$(PkgGodot_Tasks)\build\Godot.Tasks.targets')" />
+
+</Project>

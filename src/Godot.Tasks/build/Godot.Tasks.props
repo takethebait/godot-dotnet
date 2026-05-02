@@ -4,10 +4,6 @@
     <_GodotTasksAssemblyPath>$(MSBuildThisFileDirectory)..\tools\net\Godot.Tasks.dll</_GodotTasksAssemblyPath>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
-  </PropertyGroup>
-
   <!-- Auto-detect the target Godot platform if it was not specified. -->
   <PropertyGroup Condition="'$(GodotTargetPlatform)' == ''">
     <GodotTargetPlatform Condition="$(RuntimeIdentifier.StartsWith('ios'))">ios</GodotTargetPlatform>
