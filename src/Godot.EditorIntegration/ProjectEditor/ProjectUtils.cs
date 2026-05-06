@@ -1,5 +1,6 @@
 using System;
 using Godot.Bridge;
+using Godot.Common.CodeAnalysis;
 using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Locator;
@@ -38,10 +39,9 @@ internal static class ProjectUtils
 
         var mainGroup = root.AddPropertyGroup();
         mainGroup.AddProperty("TargetFramework", "net9.0");
-
         mainGroup.AddProperty("EnableDynamicLoading", "true");
 
-        string sanitizedName = IdentifierUtils.SanitizeQualifiedIdentifier(projectName);
+        string sanitizedName = IdentifierUtils.SanitizeName(projectName);
 
         // If the name is not a valid namespace, manually set RootNamespace to a sanitized one.
         if (sanitizedName != projectName)

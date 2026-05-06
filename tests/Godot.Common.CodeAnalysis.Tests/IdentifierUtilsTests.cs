@@ -1,4 +1,4 @@
-namespace Godot.SourceGeneration.Tests;
+namespace Godot.Common.CodeAnalysis.Tests;
 
 public class IdentifierUtilsTests
 {

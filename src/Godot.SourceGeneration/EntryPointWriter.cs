@@ -1,4 +1,5 @@
 using System;
+using Godot.Common.CodeAnalysis;
 
 namespace Godot.SourceGeneration;
 

@@ -1,9 +1,8 @@
 using System;
 using System.Globalization;
 using System.Text;
-using Godot.Common.CodeAnalysis;
 
-namespace Godot.SourceGeneration;
+namespace Godot.Common.CodeAnalysis;
 
 internal static class IdentifierUtils
 {
@@ -40,8 +39,14 @@ internal static class IdentifierUtils
 
         var sb = new StringBuilder(name.Length);
 
+#if NET
+        foreach (var segmentRange in name.Split('.'))
+        {
+            var segment = name[segmentRange];
+#else
         foreach (var segment in new SpanSplitEnumerator<char>(name, '.'))
         {
+#endif
             int prevLength = sb.Length;
             if (sb.Length > 0)
             {
