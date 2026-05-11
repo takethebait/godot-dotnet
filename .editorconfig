@@ -114,6 +114,10 @@ dotnet_diagnostic.IDE1006.severity = suggestion
 # RS2008: Enable analyzer release tracking for the analyzer project containing rule '{0}'.
 dotnet_diagnostic.RS2008.severity = none
 
+# TODO: Remove when diagnostic allows to ignore it for partial definitions. See https://github.com/dotnet/roslyn/issues/52904.
+# IDE0040: Accessibility modifiers required.
+dotnet_diagnostic.IDE0040.severity = suggestion
+
 # Severity levels for dotnet_naming_rule only affect IDE environments.
 # To have them extra visible to people, we can set them as 'warning' here without affecting compilation.
 
