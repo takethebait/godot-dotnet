@@ -532,11 +532,32 @@ public struct Aabb : IEquatable<Aabb>
         return under && over;
     }
 
+    /// <summary>
+    /// Returns the first point where this bounding box and the given ray intersect, as a <see cref="Vector3"/>.
+    /// If no intersection occurs, returns <see langword="null"/>.
+    /// The ray begins at <paramref name="from"/>, faces <paramref name="direction"/>, and extends towards infinity.
+    /// </summary>
+    /// <param name="from">The starting point of the ray.</param>
+    /// <param name="direction">The direction of the ray.</param>
+    /// <returns>
+    /// Whether the <see cref="Aabb"/> intersects the ray.
+    /// </returns>
     public readonly bool IntersectsRay(Vector3 from, Vector3 direction)
     {
         return IntersectsRay(from, direction, out _);
     }
 
+    /// <summary>
+    /// Returns the first point where this bounding box and the given ray intersect, as a <see cref="Vector3"/>.
+    /// If no intersection occurs, returns <see langword="null"/>.
+    /// The ray begins at <paramref name="from"/>, faces <paramref name="direction"/>, and extends towards infinity.
+    /// </summary>
+    /// <param name="from">The starting point of the ray.</param>
+    /// <param name="direction">The direction of the ray.</param>
+    /// <param name="intersectionPoint">The point of intersection, if any.</param>
+    /// <returns>
+    /// Whether the <see cref="Aabb"/> intersects the ray.
+    /// </returns>
     public readonly bool IntersectsRay(Vector3 from, Vector3 direction, out Vector3 intersectionPoint)
     {
         intersectionPoint = default;
@@ -624,6 +645,7 @@ public struct Aabb : IEquatable<Aabb>
     /// </summary>
     /// <param name="from">The start of the line segment.</param>
     /// <param name="to">The end of the line segment.</param>
+    /// <param name="intersectionPoint">The point of intersection, if any.</param>
     /// <returns>
     /// A <see langword="bool"/> for whether or not the <see cref="Aabb"/> intersects the line segment.
     /// </returns>
