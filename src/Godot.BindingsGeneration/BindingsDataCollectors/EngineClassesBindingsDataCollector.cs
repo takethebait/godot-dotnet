@@ -106,17 +106,17 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                         "[global::System.Diagnostics.CodeAnalysis.MemberNotNull(nameof(_registerVirtualOverridesHelpers))]",
                     },
                     IsStatic = true,
-                    Body = MethodBody.Create(writer =>
+                    Body = MethodBody.CreateUnsafe(writer =>
                     {
                         writer.WriteLine($"var bindingCallbacks = new global::System.Collections.Generic.Dictionary<global::Godot.StringName, global::Godot.NativeInterop.GDExtensionInstanceBindingCallbacks>(capacity: {context.Api.Classes.Length});");
-                        writer.WriteLine($"var registerVirtualOverridesHelpers = new global::System.Collections.Generic.Dictionary<global::Godot.StringName, global::Godot.NativeInterop.InteropUtils.RegisterVirtualOverrideHelper>(capacity: {context.Api.Classes.Length});");
+                        writer.WriteLine($"var registerVirtualOverridesHelpers = new global::System.Collections.Generic.Dictionary<global::Godot.StringName, global::Godot.NativeInterop.InteropUtils.RegisterVirtualOverrideHandler>(capacity: {context.Api.Classes.Length});");
 
                         foreach (var engineClass in context.Api.Classes)
                         {
                             var type = context.TypeDB.GetTypeFromEngineName(engineClass.Name);
 
                             writer.WriteLine($"bindingCallbacks.Add({type.FullNameWithGlobal}.NativeName, {type.FullNameWithGlobal}.BindingCallbacks);");
-                            writer.WriteLine($"registerVirtualOverridesHelpers.Add({type.FullNameWithGlobal}.NativeName, {type.FullNameWithGlobal}.RegisterVirtualOverrides);");
+                            writer.WriteLine($"registerVirtualOverridesHelpers.Add({type.FullNameWithGlobal}.NativeName, new global::Godot.NativeInterop.InteropUtils.RegisterVirtualOverrideHandler((nint)(delegate* managed<global::System.Type, global::Godot.Bridge.ClassRegistrationContext, void>)&{type.FullNameWithGlobal}.RegisterVirtualOverrides));");
                         }
 
                         writer.WriteLine("_bindingCallbacks = global::System.Collections.Frozen.FrozenDictionary.ToFrozenDictionary(bindingCallbacks, global::Godot.NativeInterop.StringNameEqualityComparer.Default);");

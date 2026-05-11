@@ -7,11 +7,25 @@ namespace Godot.NativeInterop;
 
 internal static partial class InteropUtils
 {
+    private readonly struct RegisterVirtualOverrideHandler
+    {
+        private readonly nint _methodPtr;
+
+        public RegisterVirtualOverrideHandler(nint methodPtr)
+        {
+            _methodPtr = methodPtr;
+        }
+
+        public unsafe void Invoke([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods | DynamicallyAccessedMemberTypes.NonPublicMethods)] Type type, ClassRegistrationContext context)
+        {
+            var function = (delegate* managed<Type, ClassRegistrationContext, void>)_methodPtr;
+            function(type, context);
+        }
+    }
+
     private static FrozenDictionary<StringName, GDExtensionInstanceBindingCallbacks> _bindingCallbacks;
 
-    private delegate void RegisterVirtualOverrideHelper([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods | DynamicallyAccessedMemberTypes.NonPublicMethods)] Type type, ClassRegistrationContext context);
-
-    private static FrozenDictionary<StringName, RegisterVirtualOverrideHelper> _registerVirtualOverridesHelpers;
+    private static FrozenDictionary<StringName, RegisterVirtualOverrideHandler> _registerVirtualOverridesHelpers;
 
     static InteropUtils()
     {
@@ -44,7 +58,7 @@ internal static partial class InteropUtils
         // It's fine if there is no helper for this class, it may just mean there are no virtual overrides to register.
         if (_registerVirtualOverridesHelpers.TryGetValue(context.NativeClassName, out var registerVirtualOverrides))
         {
-            registerVirtualOverrides(type, context);
+            registerVirtualOverrides.Invoke(type, context);
         }
     }
 }
