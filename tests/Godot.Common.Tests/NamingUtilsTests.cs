@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Godot.BindingsGeneration.ApiDump;
 using Godot.BindingsGeneration.Reflection;
 
@@ -13,6 +12,15 @@ public class NamingUtilsTests
     [InlineData("ONEWORD", "Oneword")]
     [InlineData("TWO_WORDS", "TwoWords")]
     [InlineData("THREE_SEPARATE_WORDS", "ThreeSeparateWords")]
+    [InlineData("_unnamed_property0", "_UnnamedProperty0")]
+    [InlineData("_Unnamed_Property0", "_UnnamedProperty0")]
+    [InlineData("__double_underscore", "__DoubleUnderscore")]
+    [InlineData("__Double_Underscore", "__DoubleUnderscore")]
+    [InlineData("double__underscore", "DoubleUnderscore")]
+    [InlineData("Double__Underscore", "DoubleUnderscore")]
+    [InlineData("checkFileSignature", "CheckFileSignature")]
+    [InlineData("_checkFileSignature", "_CheckFileSignature")]
+    [InlineData("__checkFileSignature", "__CheckFileSignature")]
     public void SnakeToPascalCase(string value, string expected)
     {
         string actual = NamingUtils.SnakeToPascalCase(value);
@@ -26,6 +34,15 @@ public class NamingUtilsTests
     [InlineData("ONEWORD", "oneword")]
     [InlineData("TWO_WORDS", "twoWords")]
     [InlineData("THREE_SEPARATE_WORDS", "threeSeparateWords")]
+    [InlineData("_unnamed_arg0", "_unnamedArg0")]
+    [InlineData("_Unnamed_arg0", "_unnamedArg0")]
+    [InlineData("__double_underscore", "__doubleUnderscore")]
+    [InlineData("__Double_Underscore", "__doubleUnderscore")]
+    [InlineData("double__underscore", "doubleUnderscore")]
+    [InlineData("Double__Underscore", "doubleUnderscore")]
+    [InlineData("checkFileSignature", "checkFileSignature")]
+    [InlineData("_checkFileSignature", "_checkFileSignature")]
+    [InlineData("__checkFileSignature", "__checkFileSignature")]
     public void SnakeToCamelCase(string value, string expected)
     {
         string actual = NamingUtils.SnakeToCamelCase(value);
@@ -71,6 +88,9 @@ public class NamingUtilsTests
     [InlineData("X509Certificate", "X509Certificate")]
     [InlineData("XRServer", "XRServer")]
     [InlineData("YSort", "YSort")]
+    [InlineData("_PrivateClass", "_PrivateClass")]
+    [InlineData("__DoubleUnderscore", "__DoubleUnderscore")]
+    [InlineData("Double__Underscore", "Double__Underscore")]
     public void PascalToPascalCase(string value, string expected)
     {
         string actual = NamingUtils.PascalToPascalCase(value);

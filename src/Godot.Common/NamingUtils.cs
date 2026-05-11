@@ -14,6 +14,8 @@ namespace Godot.Common;
 public static class NamingUtils
 {
     private static readonly SearchValues<char> _numberSearchValues = SearchValues.Create("0123456789");
+    private static readonly SearchValues<char> _upperCaseSearchValues = SearchValues.Create("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    private static readonly SearchValues<char> _lowerCaseSearchValues = SearchValues.Create("abcdefghijklmnopqrstuvwxyz");
 
     // Hardcoded collection of PascalCase name conversions.
     private static readonly Dictionary<string, string> _pascalCaseNameOverrides = new()
@@ -86,19 +88,31 @@ public static class NamingUtils
             return value;
         }
 
+        if (MayBeCamelOrPascalCase(value))
+        {
+            return PascalToPascalCase(value);
+        }
+
         return string.Create(value.Length, value, static (chars, value) =>
         {
+            bool isEffectiveFirstPart = true;
             int index = 0;
             foreach (var part in new SpanSnakeCaseEnumerator(value))
             {
-                if (index == 0 && part.IsEmpty)
+                if (isEffectiveFirstPart && part.IsEmpty)
                 {
                     // If the first part is empty then the name starts with an underscore, preserve it.
                     chars[index++] = '_';
                     continue;
                 }
 
-                Debug.Assert(!part.IsEmpty, "A part can't be empty, the enumerator should have exited the foreach if we reached EOF.");
+                if (part.IsEmpty)
+                {
+                    // Skip empty parts. This can happen when there are consecutive underscores in the name.
+                    continue;
+                }
+
+                isEffectiveFirstPart = false;
 
                 if (_pascalCasePartOverrides.TryGetValue(part.ToString(), out string? partOverride))
                 {
@@ -111,9 +125,9 @@ public static class NamingUtils
                 if (part.Length <= 2)
                 {
                     // Acronym of length 1 or 2.
-                    part.ToLowerInvariant(chars[index..]);
-                    chars[index] = char.ToUpperInvariant(chars[index]);
-                    index += part.Length;
+                    int partStart = index;
+                    index += part.ToLowerInvariant(chars[index..]);
+                    chars[partStart] = char.ToUpperInvariant(chars[partStart]);
                     continue;
                 }
 
@@ -160,45 +174,78 @@ public static class NamingUtils
             return value;
         }
 
+        if (MayBeCamelOrPascalCase(value))
+        {
+            string pascalCase = PascalToPascalCase(value);
+
+            // Ensure the first non-underscore character is lowercase.
+            pascalCase = string.Create(pascalCase.Length, pascalCase, static (chars, value) =>
+            {
+                value.AsSpan().CopyTo(chars);
+
+                int firstRealCharacter = value.AsSpan().IndexOfAnyExcept('_');
+                if (firstRealCharacter != -1)
+                {
+                    chars[firstRealCharacter] = char.ToLowerInvariant(value[firstRealCharacter]);
+                }
+            });
+
+            return pascalCase;
+        }
+
         return string.Create(value.Length, value, static (chars, value) =>
         {
+            bool isEffectiveFirstPart = true;
             int index = 0;
             foreach (var part in new SpanSnakeCaseEnumerator(value))
             {
-                Debug.Assert(!part.IsEmpty, "A part can't be empty, the enumerator should have exited the foreach if we reached EOF.");
+                if (isEffectiveFirstPart && part.IsEmpty)
+                {
+                    // If the first part is empty then the name starts with an underscore, preserve it.
+                    chars[index++] = '_';
+                    continue;
+                }
+
+                if (part.IsEmpty)
+                {
+                    // Skip empty parts. This can happen when there are consecutive underscores in the name.
+                    continue;
+                }
 
                 if (_pascalCasePartOverrides.TryGetValue(part.ToString(), out string? partOverride))
                 {
                     // Add the hardcoded part.
-                    if (index == 0)
+                    if (isEffectiveFirstPart)
                     {
                         // This is the first part, so it should be all lowercase.
-                        partOverride.AsSpan().ToLowerInvariant(chars);
+                        index += partOverride.AsSpan().ToLowerInvariant(chars[index..]);
                     }
                     else
                     {
                         partOverride.CopyTo(chars[index..]);
+                        index += partOverride.Length;
                     }
-                    index += partOverride.Length;
+                    isEffectiveFirstPart = false;
                     continue;
                 }
 
                 if (part.Length <= 2)
                 {
                     // Acronym of length 1 or 2.
-                    part.ToLowerInvariant(chars[index..]);
-                    if (index != 0)
+                    int partStart = index;
+                    index += part.ToLowerInvariant(chars[index..]);
+                    if (!isEffectiveFirstPart)
                     {
-                        chars[index] = char.ToUpperInvariant(chars[index]);
+                        chars[partStart] = char.ToUpperInvariant(chars[partStart]);
                     }
-                    index += part.Length;
+                    isEffectiveFirstPart = false;
                     continue;
                 }
 
-                if (index == 0)
+                if (isEffectiveFirstPart)
                 {
                     // This is the first part, so it should be all lowercase.
-                    index += part.ToLowerInvariant(chars);
+                    index += part.ToLowerInvariant(chars[index..]);
                 }
                 else
                 {
@@ -207,6 +254,8 @@ public static class NamingUtils
                     // Add the rest of the part's characters as lowercase.
                     index += part[1..].ToLowerInvariant(chars[index..]);
                 }
+
+                isEffectiveFirstPart = false;
             }
             // Ensure every character after a digit is uppercase.
             {
@@ -497,5 +546,17 @@ public static class NamingUtils
         {
             @enum.Values.RemoveAt(maxEnumFieldIndex);
         }
+    }
+
+    private static bool MayBeCamelOrPascalCase(ReadOnlySpan<char> value)
+    {
+        // Discard leading underscores, since we allow them to count as
+        // camel case and pascal case.
+        int firstLetter = value.IndexOfAnyExcept('_');
+        value = value[firstLetter..];
+
+        return !value.Contains('_')
+            && value.ContainsAny(_lowerCaseSearchValues)
+            && value.ContainsAny(_upperCaseSearchValues);
     }
 }
