@@ -24,6 +24,7 @@ internal static class EditorThemeNames
     public static StringName Warning { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("Warning"u8);
     public static StringName Error { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("Error"u8);
     public static StringName ErrorWarning { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("ErrorWarning"u8);
+    public static StringName NodeWarning { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("NodeWarning"u8);
 
     // Theme variations.
     public static StringName FlatButton { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("FlatButton"u8);
@@ -51,7 +52,9 @@ internal static class EditorThemeNames
     // Editor constants.
     public static StringName TextHighlightHorizontalPadding { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("text_highlight_h_padding"u8);
     public static StringName TextHighlightVerticalPadding { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("text_highlight_v_padding"u8);
+    public static StringName Separation { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("separation"u8);
     public static StringName MarginTop { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("margin_top"u8);
+    public static StringName MarginBottom { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("margin_bottom"u8);
     public static StringName MarginLeft { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("margin_left"u8);
     public static StringName MarginRight { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("margin_right"u8);
     public static StringName OutputSourceSize { get; } = StringName.CreateStaticStringNameFromAsciiLiteral("output_source_size"u8);

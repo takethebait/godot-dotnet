@@ -8,6 +8,82 @@ namespace Godot.EditorIntegration.Internals;
 
 unsafe partial class EditorInternal
 {
+    private static delegate* unmanaged[Cdecl]<void> _module_complete_initialization;
+
+    public static void ModuleCompleteInitialization()
+    {
+        Debug.Assert(_module_complete_initialization is not null);
+        _module_complete_initialization();
+    }
+
+    private static delegate* unmanaged[Cdecl]<NativeGodotString*, void> _module_fail_initialization;
+
+    public static void ModuleFailInitialization(string errorMessage)
+    {
+        Debug.Assert(_module_fail_initialization is not null);
+        using NativeGodotString errorMessageNative = NativeGodotString.Create(errorMessage);
+        _module_fail_initialization(&errorMessageNative);
+    }
+
+    private static delegate* unmanaged[Cdecl]<NativeGodotString*, long*, long*, void> _module_get_assembly_load_state;
+
+    public static void ModuleGetAssemblyLoadState(out string? assemblyName, out AssemblyLoadState loadState)
+    {
+        Debug.Assert(_module_get_assembly_load_state is not null);
+        using NativeGodotString assemblyNameNative = default;
+        long initState = 0;
+        long failedState = 0;
+        _module_get_assembly_load_state(&assemblyNameNative, &initState, &failedState);
+        assemblyName = assemblyNameNative.ToString();
+        loadState = (InitState)initState switch
+        {
+            InitState.Uninitialized => AssemblyLoadState.NotLoaded,
+            InitState.Initializing => AssemblyLoadState.Loading,
+            InitState.Initialized => AssemblyLoadState.Loaded,
+            InitState.Failed => (AssemblyLoadFailedState)failedState switch
+            {
+                AssemblyLoadFailedState.ProjectNotFound => AssemblyLoadState.ProjectNotFound,
+                AssemblyLoadFailedState.DllNotFound => AssemblyLoadState.DllNotFound,
+                AssemblyLoadFailedState.FailedToLoad => AssemblyLoadState.FailedToLoad,
+                _ => AssemblyLoadState.FailedToLoad,
+            },
+            _ => AssemblyLoadState.NotLoaded,
+        };
+    }
+
+    private static delegate* unmanaged[Cdecl]<NativeGodotString*, void> _module_change_project_assembly;
+
+    public static void ModuleChangeProjectAssembly(string assemblyName)
+    {
+        Debug.Assert(_module_change_project_assembly is not null);
+        using NativeGodotString assemblyNameNative = NativeGodotString.Create(assemblyName);
+        _module_change_project_assembly(&assemblyNameNative);
+    }
+
+    private static delegate* unmanaged[Cdecl]<void> _status_indicator_notify_state_changed;
+
+    public static void StatusIndicatorNotifyStateChanged()
+    {
+        Debug.Assert(_status_indicator_notify_state_changed is not null);
+        _status_indicator_notify_state_changed();
+    }
+
+    private static delegate* unmanaged[Cdecl]<long, void> _status_indicator_update_severity;
+
+    public static void StatusIndicatorUpdateSeverity(StatusIndicatorSeverity severity)
+    {
+        Debug.Assert(_status_indicator_update_severity is not null);
+        _status_indicator_update_severity((long)severity);
+    }
+
+    private static delegate* unmanaged[Cdecl]<nint, void> _status_panel_set_content;
+
+    public static void StatusPanelSetContent(Control? content)
+    {
+        Debug.Assert(_status_panel_set_content is not null);
+        _status_panel_set_content(content?.NativePtr ?? 0);
+    }
+
     private static delegate* unmanaged[Cdecl]<NativeGodotString*, void> _get_editor_assemblies_path;
 
     public static string GetEditorAssembliesPath()
@@ -69,7 +145,7 @@ unsafe partial class EditorInternal
         return dest.ToString();
     }
 
-    private static delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, int, bool, void> _progress_add_task;
+    private static delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, long, bool, void> _progress_add_task;
 
     public static void ProgressAddTask(string task, string label, int steps, bool canCancel = false)
     {
@@ -79,7 +155,7 @@ unsafe partial class EditorInternal
         _progress_add_task(&taskNative, &labelNative, steps, canCancel);
     }
 
-    private static delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, int, bool, bool> _progress_task_step;
+    private static delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, long, bool, bool> _progress_task_step;
 
     public static bool ProgressTaskStep(string task, string state, int step = -1, bool forceRefresh = true)
     {
@@ -113,12 +189,12 @@ unsafe partial class EditorInternal
         _show_warning(&textNative, &titleNative);
     }
 
-    private static delegate* unmanaged[Cdecl]<void*, void> _add_control_to_editor_run_bar;
+    private static delegate* unmanaged[Cdecl]<nint, void> _add_control_to_editor_run_bar;
 
     public static void AddControlToEditorRunBar(Control control)
     {
         Debug.Assert(_add_control_to_editor_run_bar is not null);
-        _add_control_to_editor_run_bar((void*)control.NativePtr);
+        _add_control_to_editor_run_bar(control.NativePtr);
     }
 
     private static delegate* unmanaged[Cdecl]<NativeGodotString*, bool> _is_macos_app_bundle_installed;

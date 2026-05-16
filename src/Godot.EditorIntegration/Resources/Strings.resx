@@ -196,6 +196,9 @@
   <data name="DotNetEditorPlugin_CSharpSolutionAlreadyExists" xml:space="preserve">
     <value>C# solution already exists. This will override the existing C# project file, any manual changes will be lost.</value>
   </data>
+  <data name="DotNetEditorPlugin_DotNetSdkNotFound" xml:space="preserve">
+    <value>Unable to find valid .NET SDK.</value>
+  </data>
   <data name="DotNetEditorPlugin_GenerateSolutionEditorProgressLabel" xml:space="preserve">
     <value>Generating C# solution...</value>
   </data>
@@ -366,5 +369,59 @@
   </data>
   <data name="PlatformNotSupported_VisualStudio" xml:space="preserve">
     <value>Visual Studio not supported on this platform.</value>
+  </data>
+  <data name="ProjectSelectorDialog_SearchProjects" xml:space="preserve">
+    <value>Search projects...</value>
+  </data>
+  <data name="ProjectSelectorDialog_SomeProjectsNotShown" xml:space="preserve">
+    <value>Some projects were not shown because they are located in subdirectories. Only projects in the root directory are supported.</value>
+  </data>
+  <data name="ProjectSelectorDialog_Title" xml:space="preserve">
+    <value>Select C# project</value>
+  </data>
+  <data name="StatusIndicatorPanel_AssemblyLoadState_DllNotFound" xml:space="preserve">
+    <value>No C# assembly loaded. Project needs to be built.</value>
+  </data>
+  <data name="StatusIndicatorPanel_AssemblyLoadState_Failed" xml:space="preserve">
+    <value>Failed to load C# assembly.</value>
+  </data>
+  <data name="StatusIndicatorPanel_AssemblyLoadState_None" xml:space="preserve">
+    <value>No C# assembly loaded.</value>
+  </data>
+  <data name="StatusIndicatorPanel_AssemblyLoadState_Unknown" xml:space="preserve">
+    <value>Unknown C# assembly loaded.</value>
+  </data>
+  <data name="StatusIndicatorPanel_ClickToCopyVersion" xml:space="preserve">
+    <value>Click to copy the version information.</value>
+  </data>
+  <data name="StatusIndicatorPanel_DotNetSdkLabel_NotFound" xml:space="preserve">
+    <value>Not found</value>
+  </data>
+  <data name="StatusIndicatorPanel_EditorIntegrationVersionLabel" xml:space="preserve">
+    <value>Godot .NET editor integration</value>
+  </data>
+  <data name="StatusIndicatorPanel_EditorIntegrationVersionLabel_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="StatusIndicatorPanel_ProjectBuild" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="StatusIndicatorPanel_ProjectChange" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="StatusIndicatorPanel_ProjectOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="StatusIndicatorPanel_WorkspaceOpenState_Failed" xml:space="preserve">
+    <value>Failed to open C# project.</value>
+  </data>
+  <data name="StatusIndicatorPanel_WorkspaceOpenState_None" xml:space="preserve">
+    <value>No C# project open.</value>
+  </data>
+  <data name="StatusIndicatorPanel_WorkspaceOpenState_None_FoundProjects" xml:space="preserve">
+    <value>No C# project open. Found C# projects in the workspace.</value>
+  </data>
+  <data name="StatusIndicatorPanel_WorkspaceOpenState_Opening" xml:space="preserve">
+    <value>Opening C# project...</value>
   </data>
 </root>

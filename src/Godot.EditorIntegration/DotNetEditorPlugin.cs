@@ -26,6 +26,8 @@ internal sealed partial class DotNetEditorPlugin : EditorPlugin
 
     private ConfirmationDialog _confirmCreateSlnDialog;
 
+    private StatusIndicatorPanel _statusIndicatorPanel;
+
     private MSBuildPanel _msbuildPanel;
 
     private Button _toolBarBuildButton;
@@ -153,7 +155,7 @@ internal sealed partial class DotNetEditorPlugin : EditorPlugin
         EditorInterface.Singleton.PopupDialogCentered(_confirmCreateSlnDialog);
     }
 
-    private void BuildProjectPressed()
+    public void BuildProjectPressed()
     {
         if (!File.Exists(EditorPath.ProjectCSProjPath))
         {
@@ -206,7 +208,15 @@ internal sealed partial class DotNetEditorPlugin : EditorPlugin
 
         // Register MSBuildLocator defaults so ProjectUtils can create/edit projects.
         // This must be done before ProjectUtils is used for the first time.
-        ProjectUtils.MSBuildLocatorRegisterDefaults();
+        if (ProjectUtils.MSBuildLocatorTryRegisterDefaults(out string? sdkVersion, out string? sdkPath))
+        {
+            EditorIntegrationState.SetDotNetSdkInfo(sdkVersion, sdkPath);
+        }
+        else
+        {
+            EditorInternal.ModuleFailInitialization(SR.DotNetEditorPlugin_DotNetSdkNotFound);
+            return;
+        }
 
         _editorSettings = EditorInterface.Singleton.GetEditorSettings();
 
@@ -336,7 +346,12 @@ internal sealed partial class DotNetEditorPlugin : EditorPlugin
         _exportPlugin = new DotNetExportPlugin();
         AddExportPlugin(_exportPlugin);
 
+        // Status indicator panel.
+        _statusIndicatorPanel = new StatusIndicatorPanel();
+
         CodeEditorManager = new CodeEditorManagers();
+
+        EditorInternal.ModuleCompleteInitialization();
     }
 
     protected override void _ExitTree()
@@ -344,8 +359,14 @@ internal sealed partial class DotNetEditorPlugin : EditorPlugin
         CodeEditorManager?.Dispose();
 
         // Export plugin.
-        RemoveExportPlugin(_exportPlugin);
-        _exportPlugin.Dispose();
+        if (_exportPlugin is not null)
+        {
+            RemoveExportPlugin(_exportPlugin);
+            _exportPlugin.Dispose();
+        }
+
+        // Status indicator panel.
+        _statusIndicatorPanel?.QueueFree();
 
         // .NET build button.
         _toolBarBuildButton?.QueueFree();

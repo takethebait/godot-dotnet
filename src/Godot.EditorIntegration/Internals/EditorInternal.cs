@@ -18,17 +18,24 @@ internal static partial class EditorInternal
     {
         _getProcAddress = (GetProcAddressFunction)getProcAddress;
 
+        _module_complete_initialization = (delegate* unmanaged[Cdecl]<void>)LoadProcAddress("module_complete_initialization"u8);
+        _module_fail_initialization = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("module_fail_initialization"u8);
+        _module_get_assembly_load_state = (delegate* unmanaged[Cdecl]<NativeGodotString*, long*, long*, void>)LoadProcAddress("module_get_assembly_load_state"u8);
+        _module_change_project_assembly = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("module_change_project_assembly"u8);
+        _status_indicator_notify_state_changed = (delegate* unmanaged[Cdecl]<void>)LoadProcAddress("status_indicator_notify_state_changed"u8);
+        _status_indicator_update_severity = (delegate* unmanaged[Cdecl]<long, void>)LoadProcAddress("status_indicator_update_severity"u8);
+        _status_panel_set_content = (delegate* unmanaged[Cdecl]<nint, void>)LoadProcAddress("status_panel_set_content"u8);
         _get_editor_assemblies_path = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("get_editor_assemblies_path"u8);
         _get_project_assemblies_path = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("get_project_assemblies_path"u8);
         _get_project_output_path = (delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, void>)LoadProcAddress("get_project_output_path"u8);
         _get_project_solution_path = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("get_project_solution_path"u8);
         _get_project_csproj_path = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("get_project_csproj_path"u8);
         _get_project_assembly_name = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("get_project_assembly_name"u8);
-        _progress_add_task = (delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, int, bool, void>)LoadProcAddress("progress_add_task"u8);
-        _progress_task_step = (delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, int, bool, bool>)LoadProcAddress("progress_task_step"u8);
+        _progress_add_task = (delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, long, bool, void>)LoadProcAddress("progress_add_task"u8);
+        _progress_task_step = (delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, long, bool, bool>)LoadProcAddress("progress_task_step"u8);
         _progress_end_task = (delegate* unmanaged[Cdecl]<NativeGodotString*, void>)LoadProcAddress("progress_end_task"u8);
         _show_warning = (delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotString*, void>)LoadProcAddress("show_warning"u8);
-        _add_control_to_editor_run_bar = (delegate* unmanaged[Cdecl]<void*, void>)LoadProcAddress("add_control_to_editor_run_bar"u8);
+        _add_control_to_editor_run_bar = (delegate* unmanaged[Cdecl]<nint, void>)LoadProcAddress("add_control_to_editor_run_bar"u8);
         _is_macos_app_bundle_installed = (delegate* unmanaged[Cdecl]<NativeGodotString*, bool>)LoadProcAddress("is_macos_app_bundle_installed"u8);
         _lipo_create_file = (delegate* unmanaged[Cdecl]<NativeGodotString*, NativeGodotPackedStringArray*, bool>)LoadProcAddress("lipo_create_file"u8);
 
