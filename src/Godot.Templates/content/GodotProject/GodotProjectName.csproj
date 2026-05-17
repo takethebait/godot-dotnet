@@ -6,6 +6,7 @@
     <LangVersion Condition="'$(LangVersion)' != ''">$(ProjectLanguageVersion)</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 
   <PropertyGroup>
