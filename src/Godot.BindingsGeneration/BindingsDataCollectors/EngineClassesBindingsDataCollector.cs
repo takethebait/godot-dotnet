@@ -197,6 +197,7 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                     writer.WriteLine("NativePtr = (nint)nativePtr,");
                     writer.WriteLine("InstanceBindingAlreadyBound = true,");
                     writer.WriteLine("NativeClassName = NativeName,");
+                    writer.WriteLine("SkipPostInitializeNotification = true,");
                     writer.Indent--;
                     writer.WriteLine("});");
                     writer.WriteLine("return (void*)global::System.Runtime.InteropServices.GCHandle.ToIntPtr(instance.GCHandle);");

@@ -66,6 +66,8 @@ partial class GodotObject : IDisposable
         /// This must be <see langword="false"/> to properly finish initialization of the object.
         /// However, when constructing from <see cref="GodotRegistry.Create_Native(void*, bool)"/>,
         /// it depends on the <c>notifyPostInitialize</c> parameter because the engine controls it.
+        /// This is also set to <see langword="true"/> for built-in types in their create bindings
+        /// callback because they are already postinitialized by the engine.
         /// </summary>
         internal bool SkipPostInitializeNotification;
     }
