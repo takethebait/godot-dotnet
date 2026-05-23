@@ -124,27 +124,34 @@
   -->
   <Target Name="PackageBuildHostDirectories" BeforeTargets="_GetPackageFiles;AssignTargetPaths" Condition="'$(DesignTimeBuild)' != 'true'">
     <ItemGroup>
-      <_BuildHostNet472Files Include="$(OutputPath)BuildHost-net472/**/*">
-        <BuildHostFolderName>BuildHost-net472</BuildHostFolderName>
-      </_BuildHostNet472Files>
-      <_BuildHostNetcoreFiles Include="$(OutputPath)BuildHost-netcore/**/*">
-        <BuildHostFolderName>BuildHost-netcore</BuildHostFolderName>
-      </_BuildHostNetcoreFiles>
+      <_BuildHostAssets Include="@(Content)"
+        Condition="$([System.String]::Copy('%(Content.Identity)').Contains('BuildHost'))">
+        <TargetPath>%(Content.TargetPath)</TargetPath>
+      </_BuildHostAssets>
     </ItemGroup>
+
     <ItemGroup>
+      <!--
+        We're setting both TargetPath and PackagePath here, the former when this is used in a regular build to deploy
+        and the latter for when this called during pack. By putting the PackagePath in any/any, we only have to deploy
+        this once rather than per TFM.
+        Similarly, we set CopyToOutputDirectory for the regular build and PackageCopyToOutput for the packaging process.
+      -->
+      <!-- We have to remove them first to avoid conflicts with existing content items that explicitly exclude them. -->
+      <Content Remove="%(_BuildHostAssets.Identity)" />
       <!-- Godot.EditorIntegration -->
-      <Content Include="%(_BuildHostNet472Files.Identity)"
-        PackagePath="contentFiles/any/any/%(_BuildHostNet472Files.BuildHostFolderName)/%(_BuildHostNet472Files.RecursiveDir)%(_BuildHostNet472Files.Filename)%(_BuildHostNet472Files.Extension)"
-        PackageCopyToOutput="true" />
-      <Content Include="%(_BuildHostNetcoreFiles.Identity)"
-        PackagePath="contentFiles/any/any/%(_BuildHostNetcoreFiles.BuildHostFolderName)/%(_BuildHostNetcoreFiles.RecursiveDir)%(_BuildHostNetcoreFiles.Filename)%(_BuildHostNetcoreFiles.Extension)"
+      <Content Include="%(_BuildHostAssets.Identity)"
+        Condition="'%(_BuildHostAssets.TargetPath)' != '' and '%(_BuildHostAssets.Extension)' != '.xml'"
+        TargetPath="$([System.IO.Path]::Combine('%(_BuildHostAssets.TargetPath)'))"
+        PackagePath="$([System.IO.Path]::Combine('contentFiles', 'any', 'any', '%(_BuildHostAssets.TargetPath)'))"
+        CopyToOutputDirectory="PreserveNewest"
         PackageCopyToOutput="true" />
       <!-- Godot.UpgradeAssistant.Cli -->
-      <Content Include="%(_BuildHostNet472Files.Identity)"
-        PackagePath="contentFiles/any/any/Godot.UpgradeAssistant.Cli/%(_BuildHostNet472Files.BuildHostFolderName)/%(_BuildHostNet472Files.RecursiveDir)%(_BuildHostNet472Files.Filename)%(_BuildHostNet472Files.Extension)"
-        PackageCopyToOutput="true" />
-      <Content Include="%(_BuildHostNetcoreFiles.Identity)"
-        PackagePath="contentFiles/any/any/Godot.UpgradeAssistant.Cli/%(_BuildHostNetcoreFiles.BuildHostFolderName)/%(_BuildHostNetcoreFiles.RecursiveDir)%(_BuildHostNetcoreFiles.Filename)%(_BuildHostNetcoreFiles.Extension)"
+      <Content Include="%(_BuildHostAssets.Identity)"
+        Condition="'%(_BuildHostAssets.TargetPath)' != '' and '%(_BuildHostAssets.Extension)' != '.xml'"
+        TargetPath="$([System.IO.Path]::Combine('%(_BuildHostAssets.TargetPath)'))"
+        PackagePath="$([System.IO.Path]::Combine('contentFiles', 'any', 'any', 'Godot.UpgradeAssistant.Cli', '%(_BuildHostAssets.TargetPath)'))"
+        CopyToOutputDirectory="PreserveNewest"
         PackageCopyToOutput="true" />
     </ItemGroup>
   </Target>
