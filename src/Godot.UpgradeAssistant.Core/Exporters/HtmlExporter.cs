@@ -147,7 +147,7 @@ public sealed class HtmlExporter : IExporter
                             <div>
                                 <p>
                                     &copy; 2026 Godot .NET Upgrade Assistant.<br/>
-                                    <a href="https://github.com/raulsntos/godot-dotnet">Tool source code on GitHub</a>
+                                    <a href="https://github.com/godotengine/godot-dotnet">Tool source code on GitHub</a>
                                 </p>
                             </div>
                         </div>

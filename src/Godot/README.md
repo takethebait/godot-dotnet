@@ -50,8 +50,7 @@ Official binaries for the Godot editor and the export templates can be found
 [See the official docs](https://docs.godotengine.org/en/latest/contributing/development/compiling)
 for compilation instructions for every supported platform.
 
-<!-- TODO: Update the repo URL when moving to the godotengine org. -->
-[See the .NET bindings repository](https://github.com/raulsntos/godot-dotnet) for instructions on building the .NET packages.
+[See the .NET bindings repository](https://github.com/godotengine/godot-dotnet) for instructions on building the .NET packages.
 
 ## Community and contributing
 
@@ -64,8 +63,7 @@ The best way to get in touch with the core engine developers is to join the
 To get started contributing to the project, see the [contributing guide](https://github.com/godotengine/godot/CONTRIBUTING.md).
 This document also includes guidelines for reporting bugs.
 
-<!-- TODO: Update the repo URL when moving to the godotengine org. -->
-The source code for this meta package and all the referenced packages can be found in the repository for the [Godot .NET bindings](https://github.com/raulsntos/godot-dotnet).
+The source code for this meta package and all the referenced packages can be found in the repository for the [Godot .NET bindings](https://github.com/godotengine/godot-dotnet).
 
 ## Documentation and demos
 
