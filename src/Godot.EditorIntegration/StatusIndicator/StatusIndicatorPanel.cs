@@ -66,9 +66,9 @@ internal sealed partial class StatusIndicatorPanel : VBoxContainer
             {
                 Text = version,
                 TooltipText = SR.StatusIndicatorPanel_ClickToCopyVersion,
+                SizeFlagsVertical = SizeFlags.ShrinkCenter,
             };
             versionInfoButton.Pressed += CopyEditorIntegrationVersionToClipboard;
-            versionInfoButton.SetVSizeFlags(SizeFlags.ShrinkCenter);
             hbox.AddChild(versionInfoButton);
         }
 
@@ -95,9 +95,9 @@ internal sealed partial class StatusIndicatorPanel : VBoxContainer
             {
                 Text = EditorIntegrationState.DotNetSdkVersion,
                 TooltipText = SR.StatusIndicatorPanel_ClickToCopyVersion,
+                SizeFlagsVertical = SizeFlags.ShrinkCenter,
             };
             _dotnetSdkInfoButton.Pressed += CopyDotNetSdkToClipboard;
-            _dotnetSdkInfoButton.SetVSizeFlags(SizeFlags.ShrinkCenter);
             _dotnetSdkInfoButton.Hide();
             hbox.AddChild(_dotnetSdkInfoButton);
         }
@@ -123,8 +123,8 @@ internal sealed partial class StatusIndicatorPanel : VBoxContainer
                 Text = SR.StatusIndicatorPanel_AssemblyLoadState_None,
                 AutowrapMode = TextServer.AutowrapMode.WordSmart,
                 CustomMinimumSize = new Vector2(512, 1),
+                SizeFlagsVertical = SizeFlags.ShrinkCenter,
             };
-            _assemblyInfoLabel.SetVSizeFlags(SizeFlags.ShrinkCenter);
             hbox.AddChild(_assemblyInfoLabel);
 
             hbox.AddSpacer(begin: false);
@@ -132,9 +132,9 @@ internal sealed partial class StatusIndicatorPanel : VBoxContainer
             _buildButton = new LinkButton()
             {
                 Text = SR.StatusIndicatorPanel_ProjectBuild,
+                SizeFlagsVertical = SizeFlags.ShrinkCenter,
             };
             _buildButton.Pressed += BuildAssembly;
-            _buildButton.SetVSizeFlags(SizeFlags.ShrinkCenter);
             _buildButton.Hide();
             hbox.AddChild(_buildButton);
         }
