@@ -336,6 +336,10 @@ internal sealed class EngineClassesBindingsDataCollector : BindingsDataCollector
                 string argName = NamingUtils.SnakeToCamelCase(arg.Name);
                 var argType = context.TypeDB.GetTypeFromEngineName(arg.Type, arg.Meta);
                 var parameter = new ParameterInfo(argName, argType);
+                if (argType.IsPointerType && argType.PointedAtType.IsReferenceType)
+                {
+                    parameter.Type = KnownTypes.SystemVoidPtr;
+                }
                 if (arg.Meta == "required")
                 {
                     parameter.Attributes.Add("[global::System.Diagnostics.CodeAnalysis.DisallowNull]");

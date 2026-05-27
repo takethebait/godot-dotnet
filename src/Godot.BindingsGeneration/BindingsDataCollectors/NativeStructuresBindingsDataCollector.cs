@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Godot.BindingsGeneration.ApiDump;
@@ -14,16 +15,21 @@ internal sealed class NativeStructuresBindingsDataCollector : BindingsDataCollec
     public override void Initialize(BindingsData.CollectionContext context)
     {
         // Native structures format use C/C++ type names.
-        context.TypeDB.RegisterTypeName("uint8_t", KnownTypes.SystemByte);
-        context.TypeDB.RegisterTypeName("uint16_t", KnownTypes.SystemUInt16);
-        context.TypeDB.RegisterTypeName("uint32_t", KnownTypes.SystemUInt32);
-        context.TypeDB.RegisterTypeName("uint64_t", KnownTypes.SystemUInt64);
-        context.TypeDB.RegisterTypeName("int8_t", KnownTypes.SystemSByte);
-        context.TypeDB.RegisterTypeName("int16_t", KnownTypes.SystemInt16);
-        context.TypeDB.RegisterTypeName("int32_t", KnownTypes.SystemInt32);
-        context.TypeDB.RegisterTypeName("int64_t", KnownTypes.SystemInt64);
-        context.TypeDB.RegisterTypeName("real_t", context.Options.FloatPrecision == GodotFloatTypePrecision.Double ? KnownTypes.SystemDouble : KnownTypes.SystemSingle);
-        context.TypeDB.RegisterTypeName("ObjectID", KnownTypes.SystemUInt64);
+        RegisterPrimitiveType("uint8_t", KnownTypes.SystemByte);
+        RegisterPrimitiveType("uint16_t", KnownTypes.SystemUInt16);
+        RegisterPrimitiveType("uint32_t", KnownTypes.SystemUInt32);
+        RegisterPrimitiveType("uint64_t", KnownTypes.SystemUInt64);
+        RegisterPrimitiveType("int8_t", KnownTypes.SystemSByte);
+        RegisterPrimitiveType("int16_t", KnownTypes.SystemInt16);
+        RegisterPrimitiveType("int32_t", KnownTypes.SystemInt32);
+        RegisterPrimitiveType("int64_t", KnownTypes.SystemInt64);
+        RegisterPrimitiveType("real_t", context.Options.FloatPrecision == GodotFloatTypePrecision.Double ? KnownTypes.SystemDouble : KnownTypes.SystemSingle);
+        RegisterPrimitiveType("ObjectID", KnownTypes.SystemUInt64);
+
+        void RegisterPrimitiveType(string engineTypeName, TypeInfo typeInfo)
+        {
+            context.TypeDB.RegisterTypeName(engineTypeName, typeInfo);
+        }
 
         foreach (var nativeStructure in context.Api.NativeStructures)
         {
@@ -38,6 +44,10 @@ internal sealed class NativeStructuresBindingsDataCollector : BindingsDataCollec
                 VisibilityAttributes = VisibilityAttributes.Public,
                 TypeAttributes = TypeAttributes.ValueType,
                 IsPartial = true,
+                Attributes =
+                {
+                    "[global::System.Runtime.InteropServices.StructLayout(global::System.Runtime.InteropServices.LayoutKind.Sequential)]",
+                },
             };
             context.AddGeneratedType($"NativeStructures/{type.Name}.cs", type);
             context.TypeDB.RegisterTypeName(nativeStructure.Name, type);
@@ -55,19 +65,49 @@ internal sealed class NativeStructuresBindingsDataCollector : BindingsDataCollec
             }
             Debug.Assert(context.IsTypeGenerated(type));
 
-            List<(string FieldName, string DefaultValue)> fieldDefaultValues = [];
+            List<(string Name, string DefaultValue)> fieldDefaultValues = [];
             foreach (var structField in NativeStructureFormatParser.EnumerateFields(nativeStructure.Format))
             {
                 string fieldName = NamingUtils.SnakeToPascalCase(structField.Name.ToString());
                 string fieldTypeName = structField.Type.ToString().Replace("::", ".");
                 TypeInfo fieldType = context.TypeDB.GetTypeFromEngineName(fieldTypeName, fieldTypeName);
+                TypeInfo fieldTypeUnmanaged = fieldType;
+
+                if (fieldType.IsPointerType && fieldType.PointedAtType.IsReferenceType)
+                {
+                    fieldType = fieldType.PointedAtType;
+                }
+                if (fieldType.IsReferenceType)
+                {
+                    fieldTypeUnmanaged = KnownTypes.SystemIntPtr;
+                }
+
+                // If the field type is one of our interop structs, we need to use 'Movable'
+                // because we can't add a ref struct field to a regular struct.
+                if (context.TypeDB.TryGetUnmanagedType(fieldType, out var unmanagedType) && unmanagedType.IsByRefLike)
+                {
+                    if (unmanagedType.Namespace == "Godot.NativeInterop")
+                    {
+                        fieldTypeUnmanaged = new TypeInfo("Movable")
+                        {
+                            TypeAttributes = TypeAttributes.ValueType,
+                            ContainingType = unmanagedType,
+                        };
+                    }
+                    else
+                    {
+                        fieldTypeUnmanaged = KnownTypes.SystemIntPtr;
+                    }
+                }
 
                 if (structField.IsArray)
                 {
-                    fieldType = context.GetOrAddInlineArray(structField.ArrayLength).MakeGenericType([fieldType]);
+                    var arrayType = context.GetOrAddInlineArray(structField.ArrayLength);
+                    fieldType = arrayType.MakeGenericType([fieldType]);
+                    fieldTypeUnmanaged = arrayType.MakeGenericType([fieldTypeUnmanaged]);
                 }
 
-                var field = new FieldInfo($"_{fieldName}", fieldType)
+                var field = new FieldInfo($"_{fieldName}", fieldTypeUnmanaged)
                 {
                     VisibilityAttributes = VisibilityAttributes.Private,
                     RequiresUnsafeCode = fieldType.IsPointerType,
@@ -89,7 +129,28 @@ internal sealed class NativeStructuresBindingsDataCollector : BindingsDataCollec
                         ReturnParameter = ReturnInfo.FromType(fieldType),
                         Body = MethodBody.CreateUnsafe(writer =>
                         {
-                            writer.WriteLine($"return _{fieldName};");
+                            if (fieldType == fieldTypeUnmanaged)
+                            {
+                                writer.WriteLine($"return {field.Name};");
+                                return;
+                            }
+
+                            if (fieldTypeUnmanaged.Name == "Movable")
+                            {
+                                writer.WriteLine($"return {fieldType.FullNameWithGlobal}.CreateCopying({field.Name}.DangerousSelfRef);");
+                                return;
+                            }
+
+                            if (fieldType.IsReferenceType)
+                            {
+                                // If it's a reference type, and doesn't use 'Movable', it has to be a 'GodotObject'.
+                                writer.Write("return ");
+                                writer.Write("global::Godot.NativeInterop.Marshallers.GodotObjectMarshaller.GetOrCreateManagedInstance");
+                                writer.WriteLine($"({field.Name});");
+                                return;
+                            }
+
+                            throw new NotSupportedException($"Unsupported field type in native structure: {fieldType.FullNameWithGlobal}");
                         }),
                     },
                     Setter = new MethodInfo($"set_{fieldName}")
@@ -100,11 +161,49 @@ internal sealed class NativeStructuresBindingsDataCollector : BindingsDataCollec
                         },
                         Body = MethodBody.CreateUnsafe(writer =>
                         {
-                            writer.WriteLine($"_{fieldName} = value;");
+                            if (fieldType == fieldTypeUnmanaged)
+                            {
+                                writer.WriteLine($"{field.Name} = value;");
+                                return;
+                            }
+
+                            if (fieldTypeUnmanaged.Name == "Movable")
+                            {
+                                writer.Write($"{field.Name} = value is not null");
+                                writer.Write($" ? {fieldTypeUnmanaged.ContainingType!.FullNameWithGlobal}.Create(value.NativeValue.DangerousSelfRef).AsMovable()");
+                                writer.WriteLine(" : default;");
+                                return;
+                            }
+
+                            if (fieldType.IsReferenceType)
+                            {
+                                // If it's a reference type, and doesn't use 'Movable', it has to be a 'GodotObject'.
+                                writer.Write($"{field.Name} = value is not null");
+                                writer.Write(" ? value.NativePtr");
+                                writer.WriteLine(" : default;");
+                                return;
+                            }
+
+                            throw new NotSupportedException($"Unsupported field type in native structure: {fieldType.FullNameWithGlobal}");
                         }),
                     },
                 };
                 type.DeclaredProperties.Add(property);
+            }
+
+            // HARDCODED: This native structure has an invalid format in the API dump, it's missing a field
+            // so we add it manually here.
+            if (nativeStructure.Name == "ScriptLanguageExtensionProfilingInfo")
+            {
+                // First, make sure a newer version of the API dump didn't already fix this issue
+                // and added the missing field.
+                if (!nativeStructure.Format.Contains("internal_time"))
+                {
+                    type.DeclaredFields.Add(new FieldInfo("_InternalTime", KnownTypes.SystemUInt64)
+                    {
+                        VisibilityAttributes = VisibilityAttributes.Private,
+                    });
+                }
             }
 
             // C# structs usually default all their fields to zero-initialized values.

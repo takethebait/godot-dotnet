@@ -91,30 +91,7 @@ internal sealed class RegisterVirtualOverrides : MethodBody
             writer.WriteLine('{');
             writer.Indent++;
 
-            if (method.ReturnParameter is not null)
-            {
-                writer.Write("return ");
-                if (method.ReturnParameter.Type.IsPointerType)
-                {
-                    writer.Write($"({KnownTypes.SystemIntPtr.FullNameWithGlobal})");
-                }
-            }
-            writer.Write($"__instance.{method.Name}(");
-            for (int i = 0; i < method.Parameters.Count; i++)
-            {
-                var parameter = method.Parameters[i];
-                string escapedParameterName = SourceCodeWriter.EscapeIdentifier(parameter.Name);
-                if (parameter.Type.IsPointerType)
-                {
-                    writer.Write($"({parameter.Type.FullNameWithGlobal})");
-                }
-                writer.Write(escapedParameterName);
-                if (i < method.Parameters.Count - 1)
-                {
-                    writer.Write(", ");
-                }
-            }
-            writer.WriteLine(");");
+            WriteInvocation(method, writer);
 
             writer.Indent--;
             writer.WriteLine("});");
@@ -122,5 +99,33 @@ internal sealed class RegisterVirtualOverrides : MethodBody
 
             writer.CloseBlock();
         }
+    }
+
+    private static void WriteInvocation(MethodInfo method, IndentedTextWriter writer)
+    {
+        if (method.ReturnParameter is not null)
+        {
+            writer.Write("return ");
+            if (method.ReturnParameter.Type.IsPointerType)
+            {
+                writer.Write($"({KnownTypes.SystemIntPtr.FullNameWithGlobal})");
+            }
+        }
+        writer.Write($"__instance.{method.Name}(");
+        for (int i = 0; i < method.Parameters.Count; i++)
+        {
+            var parameter = method.Parameters[i];
+            string escapedParameterName = SourceCodeWriter.EscapeIdentifier(parameter.Name);
+            if (parameter.Type.IsPointerType)
+            {
+                writer.Write($"({parameter.Type.FullNameWithGlobal})");
+            }
+            writer.Write(escapedParameterName);
+            if (i < method.Parameters.Count - 1)
+            {
+                writer.Write(", ");
+            }
+        }
+        writer.WriteLine(");");
     }
 }
