@@ -51,7 +51,7 @@ internal static partial class Program
         if (dte is null)
         {
             // Open a new instance
-            dte = TryVisualStudioLaunch("VisualStudio.DTE.17.0");
+            dte = TryVisualStudioLaunch("VisualStudio.DTE.18.0");
 
             if (dte is null)
             {
@@ -156,7 +156,7 @@ internal static partial class Program
         }
     }
 
-    [GeneratedRegex("!VisualStudio.DTE.17.0:[0-9]")]
+    [GeneratedRegex("!VisualStudio.DTE.18.0:[0-9]")]
     private static partial Regex VisualStudioDTERegex { get; }
 
     private static DTE? FindInstanceEditingSolution(string solutionPath)
