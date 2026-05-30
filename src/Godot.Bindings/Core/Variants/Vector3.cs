@@ -563,7 +563,8 @@ public struct Vector3 : IEquatable<Vector3>
     }
 
     /// <summary>
-    /// Moves this vector toward <paramref name="to"/> by the fixed <paramref name="delta"/> amount.
+    /// Returns a new vector moved toward <paramref name="to"/> by the fixed <paramref name="delta"/> amount.
+    /// Will not go past the final value.
     /// </summary>
     /// <param name="to">The vector to move towards.</param>
     /// <param name="delta">The amount to move towards by.</param>
