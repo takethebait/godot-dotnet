@@ -62,7 +62,7 @@ partial class GodotObject : IDisposable
         internal bool ReferenceAlreadyOwned;
 
         /// <summary>
-        /// Whether to avoid emitting the <see cref="NotificationPostinitialize"/> notification.
+        /// Whether to avoid emitting the <see cref="NotificationPostInitialize"/> notification.
         /// This must be <see langword="false"/> to properly finish initialization of the object.
         /// However, when constructing from <see cref="GodotRegistry.Create_Native(void*, bool)"/>,
         /// it depends on the <c>notifyPostInitialize</c> parameter because the engine controls it.
@@ -125,7 +125,7 @@ partial class GodotObject : IDisposable
 
         if (!options.SkipPostInitializeNotification)
         {
-            Notification((int)NotificationPostinitialize);
+            Notification((int)NotificationPostInitialize);
         }
 
         if (this is RefCounted refCounted && options.ReferenceAlreadyOwned)

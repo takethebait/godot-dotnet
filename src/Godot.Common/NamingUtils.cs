@@ -57,6 +57,7 @@ public static class NamingUtils
         { "OPENXR", "OpenXR" },
         { "OS", "OS" }, // Operating System
         { "POSTPROCESSING", "PostProcessing" },
+        { "POSTINITIALIZE", "PostInitialize" },
         { "PINGPONG", "PingPong" },
         { "SDFGIY", "SdfgiY" },
         { "SPIRV", "SpirV" },

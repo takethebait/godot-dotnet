@@ -529,7 +529,7 @@ public static partial class GodotRegistry
 
             if (notifyPostInitialize)
             {
-                instance.Notification((int)GodotObject.NotificationPostinitialize);
+                instance.Notification((int)GodotObject.NotificationPostInitialize);
             }
 
             return (void*)instance.NativePtr;

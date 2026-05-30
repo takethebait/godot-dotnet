@@ -8,7 +8,7 @@ public partial class TestGodotObjectConstruction_ExampleRef : RefCounted
 
     protected internal override void _Notification(int what)
     {
-        if (what == NotificationPostinitialize)
+        if (what == NotificationPostInitialize)
         {
             _wasPostInitialized = true;
         }
