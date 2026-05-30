@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
+using Godot.Bridge;
 using Godot.NativeInterop;
 
 namespace Godot;
@@ -877,6 +878,35 @@ public struct Color : IEquatable<Color>
     public static Color FromOkHsl(float hue, float saturation, float lightness, float alpha = 1.0f)
     {
         return NativeGodotColor.FromOkHsl(hue, saturation, lightness, alpha);
+    }
+
+    /// <summary>
+    /// Converts a color to OK HSL values.
+    /// </summary>
+    /// <param name="hue">Output parameter for the OK HSL hue.</param>
+    /// <param name="saturation">Output parameter for the OK HSL saturation.</param>
+    /// <param name="lightness">Output parameter for the OK HSL lightness.</param>
+    public readonly void ToOkHsl(out float hue, out float saturation, out float lightness)
+    {
+        using NativeGodotVariant color = NativeGodotVariant.CreateFromColor(this);
+        hue = GetOkColorMember(color, "ok_hsl_h"u8);
+        saturation = GetOkColorMember(color, "ok_hsl_s"u8);
+        lightness = GetOkColorMember(color, "ok_hsl_l"u8);
+
+        static unsafe float GetOkColorMember(NativeGodotVariant color, ReadOnlySpan<byte> memberNameUtf8)
+        {
+            using NativeGodotStringName memberName = NativeGodotStringName.Create(memberNameUtf8);
+
+            bool valid = false;
+            using NativeGodotVariant result = default;
+            GodotBridge.GDExtensionInterface.variant_get_named(&color, &memberName, &result, &valid);
+            if (!valid)
+            {
+                return 0;
+            }
+
+            return (float)NativeGodotVariant.ConvertToFloat(in result);
+        }
     }
 
     /// <summary>
