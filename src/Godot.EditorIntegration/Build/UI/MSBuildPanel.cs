@@ -32,7 +32,6 @@ internal sealed partial class MSBuildPanel : EditorDock
         AvailableLayouts = DockLayout.Horizontal | DockLayout.Floating;
         Global = false;
         Transient = true;
-        ClipContents = false;
     }
 
     public void UpdateBuildStateIcon()
