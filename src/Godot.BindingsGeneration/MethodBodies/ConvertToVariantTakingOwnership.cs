@@ -44,13 +44,20 @@ internal sealed class ConvertToVariantTakingOwnership : MethodBody
                 writer.WriteLine("// It's effectively a dangling pointer, so we just return null.");
                 writer.WriteLine("return default;");
                 writer.CloseBlock();
+
+                writer.WriteLine("// The Object pointer in Variant may still be a dangling pointer,");
+                writer.WriteLine("// use the ObjectID to retrieve a valid pointer or null if the object was freed.");
+                writer.WriteLine("return (nint)global::Godot.Bridge.GodotBridge.GDExtensionInterface.object_get_instance_from_id(value.ObjectId);");
             }
-            writer.Write("return ");
-            if (_isTypeAPointerInVariant)
+            else
             {
-                writer.Write('*');
+                writer.Write("return ");
+                if (_isTypeAPointerInVariant)
+                {
+                    writer.Write('*');
+                }
+                writer.WriteLine($"value.{_targetTypeName};");
             }
-            writer.WriteLine($"value.{_targetTypeName};");
             writer.CloseBlock();
 
             if (returnType == KnownTypes.NativeGodotString)
